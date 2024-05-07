@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -327,38 +327,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86f3d02e7bdf094f8f6e8d9efd17c31, type: 3}
---- !u!1 &680505221 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1081433780481683378, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-  m_PrefabInstance: {fileID: 6700647104851989874}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &680505225
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680505221}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,33 +513,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1217556360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3607353198902612848, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-  m_PrefabInstance: {fileID: 6700647104851989874}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1217556364
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217556360}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1083108532252104561, guid: fee7b40536dc41142888d612942e30f0, type: 3}
 --- !u!1 &1355567334
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +526,7 @@ GameObject:
   - component: {fileID: 1355567336}
   - component: {fileID: 1355567335}
   - component: {fileID: 1355567339}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -1162,14 +1103,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Naife Slicer
       objectReference: {fileID: 0}
-    - target: {fileID: 1495200656067297081, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495200656067297081, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.002
-      objectReference: {fileID: 0}
     - target: {fileID: 1884162868127132246, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.84
@@ -1210,36 +1143,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1884162868127132246, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5376610716705174123, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: cutForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5376610716705174123, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: defaultCrossSectionMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
-    - target: {fileID: 7725808280080292584, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 7725808280080292584, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.002
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1081433780481683378, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 680505225}
-    - targetCorrespondingSourceObject: {fileID: 3607353198902612848, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1217556364}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 448accc863ebb274fb02a237091cec07, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

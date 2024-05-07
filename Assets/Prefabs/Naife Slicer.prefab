@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1884162868127132246}
   - component: {fileID: 5376610716705174123}
+  - component: {fileID: 6432473511876617178}
   m_Layer: 0
   m_Name: Naife Slicer
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.598, z: -1.092}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 655993934366749219}
   - {fileID: 7725808280080292584}
@@ -50,11 +51,35 @@ MonoBehaviour:
   startSlicePoint: {fileID: 7725808280080292584}
   endSlicePoint: {fileID: 1495200656067297081}
   VelocityEstimator: {fileID: 1575350862214620679}
-  sliceableLayer:
+  defaultCrossSectionMaterial: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
+  cutForce: 100
+--- !u!54 &6432473511876617178
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081433780481683378}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
-  crossSectionMaterial: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
-  cutForce: 1000
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3598386967522149077
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 3598386967522149077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: 0.008}
+  m_LocalPosition: {x: 0, y: 0.14, z: 0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -113,6 +138,7 @@ GameObject:
   - component: {fileID: 8235521350680439752}
   - component: {fileID: 3032541739710195844}
   - component: {fileID: 615669890746866674}
+  - component: {fileID: 7763349429465878219}
   m_Layer: 0
   m_Name: Edge
   m_TagString: Untagged
@@ -185,6 +211,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7763349429465878219
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3607353198902612848}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1083108532252104561, guid: fee7b40536dc41142888d612942e30f0, type: 3}
 --- !u!1 &7064305837159694856
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 7064305837159694856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.18, z: 0.008}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
