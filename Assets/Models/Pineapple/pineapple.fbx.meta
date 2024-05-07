@@ -3,7 +3,17 @@ guid: d86f3d02e7bdf094f8f6e8d9efd17c31
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves
+    second: {fileID: 2100000, guid: cc81e302d891d2f4cadd6b7c7a56624c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pineapple
+    second: {fileID: 2100000, guid: a3ae4c98743fbd941af9b5bfe9218c3d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -32,10 +42,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.22
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -90,7 +100,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.0022
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
