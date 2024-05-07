@@ -332,27 +332,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1081433780481683378, guid: 448accc863ebb274fb02a237091cec07, type: 3}
   m_PrefabInstance: {fileID: 6700647104851989874}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &680505224
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680505221}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0064486675, y: 0.19308583, z: 0.03551285}
-  m_Center: {x: -0.000232758, y: 0.04654292, z: 0.010934778}
 --- !u!54 &680505225
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -376,7 +355,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -566,6 +545,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1217556360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3607353198902612848, guid: 448accc863ebb274fb02a237091cec07, type: 3}
+  m_PrefabInstance: {fileID: 6700647104851989874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1217556364
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217556360}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1083108532252104561, guid: fee7b40536dc41142888d612942e30f0, type: 3}
 --- !u!1 &1355567334
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +584,7 @@ GameObject:
   - component: {fileID: 1355567337}
   - component: {fileID: 1355567336}
   - component: {fileID: 1355567335}
+  - component: {fileID: 1355567339}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Fruit
@@ -665,12 +672,26 @@ Transform:
   m_GameObject: {fileID: 1355567334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2177, z: 0.083}
+  m_LocalPosition: {x: 0.84, y: 0.2177, z: 1.007}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1355567339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355567334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe25ec974c3b1f543b5704ae9e5e90b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountPoints: 1
+  crossSectionMaterial: {fileID: 0}
 --- !u!1 &1468256042
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +1000,7 @@ Transform:
   m_GameObject: {fileID: 3425129611426393709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.229, z: 0.102}
+  m_LocalPosition: {x: 0.85099995, y: 0.229, z: 0.7774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1077,13 +1098,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3425129611426393709}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe25ec974c3b1f543b5704ae9e5e90b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   amountPoints: 1
-  crossSectionMaterial: {fileID: 0}
+  crossSectionMaterial: {fileID: 2100000, guid: 314a6febf14e7b843869917670bcac91, type: 2}
 --- !u!64 &3785413252982394810
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1151,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1884162868127132246, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 1884162868127132246, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1159,7 +1180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1884162868127132246, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0094
+      value: 0.666
       objectReference: {fileID: 0}
     - target: {fileID: 1884162868127132246, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1194,6 +1215,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5376610716705174123, guid: 448accc863ebb274fb02a237091cec07, type: 3}
+      propertyPath: cutForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376610716705174123, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       propertyPath: defaultCrossSectionMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
@@ -1211,10 +1236,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1081433780481683378, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 680505224}
-    - targetCorrespondingSourceObject: {fileID: 1081433780481683378, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 680505225}
+    - targetCorrespondingSourceObject: {fileID: 3607353198902612848, guid: 448accc863ebb274fb02a237091cec07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1217556364}
   m_SourcePrefab: {fileID: 100100000, guid: 448accc863ebb274fb02a237091cec07, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

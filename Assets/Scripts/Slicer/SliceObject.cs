@@ -2,45 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
-using static UnityEngine.GraphicsBuffer;
 
 public class SliceObject : MonoBehaviour {
 
-    public Transform startSlicePoint;
-    public Transform endSlicePoint;
-    public VelocityEstimator VelocityEstimator;
+    [SerializeField] Transform startSlicePoint;
+    [SerializeField] Transform endSlicePoint;
+    [SerializeField] VelocityEstimator VelocityEstimator;
 
-    public Material defaultCrossSectionMaterial;
-    public float cutForce = 1000;
+    [SerializeField] Material defaultCrossSectionMaterial;
+    [SerializeField] float cutForce = 500;
 
     private Material crossSectionMaterial;
-
-    /*void FixedUpdate() {
-        bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, sliceableLayer);
-        if (hasHit) {
-            GameObject target = hit.transform.gameObject;
-            Slice(target);
-        }
-    }*/
 
     private void Start() {
         crossSectionMaterial = defaultCrossSectionMaterial;
     }
+
     public void Slice(GameObject target) {
         // Normalized perpendicular vector between up and forward knife vector
         Vector3 velocity = VelocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);
-        Debug.DrawRay(endSlicePoint.position - startSlicePoint.position, velocity, Color.green);
         planeNormal.Normalize();
 
         // Slice cut
         SlicedHull hull = target.Slice(endSlicePoint.position, planeNormal);
 
         if(hull != null) {
-            Debug.Log(hull.ToString());
-
             // Get & Set current fruit slice material
-            //GetSetCrossSectionMaterial(target);
+            GetSetCrossSectionMaterial(target);
 
             //Create top and bottom slices with a cut Material
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
@@ -64,11 +53,10 @@ public class SliceObject : MonoBehaviour {
 
     // Gets current object mateial
     private void GetSetCrossSectionMaterial(GameObject target) {
-        Fruit Fruit = target.GetComponent<Fruit>(); // Obtener el componente Fruit del GameObject target
-        if (Fruit != null) { // Verificar si el componente Fruit se encontró correctamente
-                                   // Acceder al valor de crossSectionMaterial
+        Fruit Fruit = target.GetComponent<Fruit>();
+
+        if (Fruit != null) {
             Material fruitSectionMaterial = Fruit.GetCrossSectionMaterial();
-            Debug.Log(fruitSectionMaterial);
 
             if (fruitSectionMaterial != null) {
                 crossSectionMaterial = fruitSectionMaterial;
