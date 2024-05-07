@@ -32,7 +32,7 @@ public class SliceObject : MonoBehaviour {
         SlicedHull hull = target.Slice(endSlicePoint.position, planeNormal);
 
         if(hull != null) {
-            //Create top and bottom slices with a 
+            //Create top and bottom slices with a cut Material
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
 

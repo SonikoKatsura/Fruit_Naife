@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
-//using UnityEngine.InputSystem;
 
 public class SliceObject_Test : MonoBehaviour {
     public Transform planeDebug;
@@ -21,7 +20,7 @@ public class SliceObject_Test : MonoBehaviour {
         SlicedHull hull = target.Slice(planeDebug.position, planeDebug.up);
 
         if(hull != null) {
-            //Create top and bottom slices with a 
+            //Create top and bottom slices with a cut Material
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
 
@@ -33,6 +32,7 @@ public class SliceObject_Test : MonoBehaviour {
         }
     }
 
+    // Add force
     public void SetupSlicedComponent(GameObject slicedobject) {
         Rigidbody rb = slicedobject.AddComponent<Rigidbody>();
         MeshCollider collider = slicedobject.AddComponent< MeshCollider>();
