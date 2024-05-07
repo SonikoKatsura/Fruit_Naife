@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour {
-    [SerializeField] int amountPoints = 1; 
+    [SerializeField] int amountOfPoints = 1; 
     [SerializeField] Material crossSectionMaterial;
 
     void Start() {
@@ -12,6 +12,10 @@ public class Fruit : MonoBehaviour {
         if (crossSectionMaterial == null) {
             Debug.Log(name + " missing crossSectionMaterial");
         }
+    }
+
+    public int GetAmountOfPoints() {
+        return amountOfPoints;
     }
 
     public Material GetCrossSectionMaterial() {
