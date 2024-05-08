@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1884162868127132246}
   - component: {fileID: 5376610716705174123}
   - component: {fileID: 6432473511876617178}
+  - component: {fileID: 3009483105596531915}
   m_Layer: 0
   m_Name: Naife Slicer
   m_TagString: Untagged
@@ -52,6 +53,7 @@ MonoBehaviour:
   endSlicePoint: {fileID: 1495200656067297081}
   VelocityEstimator: {fileID: 1575350862214620679}
   defaultCrossSectionMaterial: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
+  defaultCrossSectionParticles: {fileID: 8243060837207991589, guid: 9039058861feb1d4fa90a606e0a79c51, type: 3}
   cutForce: 100
 --- !u!54 &6432473511876617178
 Rigidbody:
@@ -80,6 +82,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3009483105596531915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081433780481683378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4b3ca809a0f9145b8fac92ed1b41e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3598386967522149077
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour {
     // Se crean dos AudioSources diferentes para que se puedan
     // reproducir los efectos y la música de fondo al mismo tiempo
     //public AudioSource sfxSource; // Componente AudioSource para efectos de sonido
-    public AudioSource musicSource; // Componente AudioSource para la música de fondo
+    //public AudioSource musicSource; // Componente AudioSource para la música de fondo
 
     // En vez de usar un vector de AudioClips (que podría ser) vamos a utilizar un Diccionario
     // en el que cargaremos directamente los recursos desde la jerarquía del proyecto

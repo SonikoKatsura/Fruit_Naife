@@ -9,7 +9,7 @@ public class Naife : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other != null) {
-            if (other.gameObject.CompareTag("Barrel")) {                
+            if (other.gameObject.CompareTag("Barrel")) {
 
                 // Event hit TNT Barrel
                 if (OnHitBarrel != null)

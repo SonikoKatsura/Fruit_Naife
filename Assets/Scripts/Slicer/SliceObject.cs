@@ -10,12 +10,15 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] VelocityEstimator VelocityEstimator;
 
     [SerializeField] Material defaultCrossSectionMaterial;
+    [SerializeField] ParticleSystem defaultCrossSectionParticles;
     [SerializeField] float cutForce = 500;
 
     private Material crossSectionMaterial;
+    private ParticleSystem crossSectionParticles;
 
     private void Start() {
         crossSectionMaterial = defaultCrossSectionMaterial;
+        crossSectionParticles = defaultCrossSectionParticles;
     }
 
     public void Slice(GameObject target) {
@@ -29,7 +32,7 @@ public class SliceObject : MonoBehaviour {
 
         if(hull != null) {
             // Get & Set current fruit slice material
-            GetSetCrossSectionMaterial(target);
+            GetSetCrossSectionMaterialAndEffect(target);
 
             //Create top and bottom slices with a cut Material
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
@@ -37,6 +40,9 @@ public class SliceObject : MonoBehaviour {
 
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
+
+            // PLay Particle system Effect
+            Instantiate(crossSectionParticles, transform.position, Quaternion.identity);
 
             //Destroy original
             Destroy(target);
@@ -51,18 +57,24 @@ public class SliceObject : MonoBehaviour {
         rb.AddExplosionForce(cutForce, slicedobject.transform.position, 1);
     }
 
-    // Gets current object mateial
-    private void GetSetCrossSectionMaterial(GameObject target) {
-        SlicedMaterial slicedMaterial = target.GetComponent<SlicedMaterial>();
+    // Gets current object material and effect
+    private void GetSetCrossSectionMaterialAndEffect(GameObject target) {
+        SlicedMaterialAndEffect slicedMatEffect = target.GetComponent<SlicedMaterialAndEffect>();
 
-        if (slicedMaterial != null) {
-            Material fruitSectionMaterial = slicedMaterial.GetCrossSectionMaterial();
-
-            if (fruitSectionMaterial != null) {
-                crossSectionMaterial = fruitSectionMaterial;
-            } else {
+        if (slicedMatEffect != null) {
+            // Sliced Material
+            Material currentSectionMaterial = slicedMatEffect.GetSlicedSectionMaterial();
+            if (currentSectionMaterial != null)
+                crossSectionMaterial = currentSectionMaterial;
+            else
                 crossSectionMaterial = defaultCrossSectionMaterial;
-            }
+
+            // Sliced particles
+            ParticleSystem currentSectionEffect = slicedMatEffect.GetSlicedParticles();
+            if (currentSectionEffect != null)
+                crossSectionParticles = currentSectionEffect;
+            else
+                crossSectionParticles = defaultCrossSectionParticles;
         }
         else {
             Debug.LogWarning("Missing SlicedMaterial component");

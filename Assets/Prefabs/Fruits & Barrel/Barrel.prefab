@@ -119,4 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2aad9905fc88d4f94a224f0fb46272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossSectionMaterial: {fileID: 2100000, guid: 59bfe23abad4d094da1a274ff74a0d1a, type: 2}
+  slicedSectionMaterial: {fileID: 2100000, guid: 59bfe23abad4d094da1a274ff74a0d1a, type: 2}
+  slicedParticles: {fileID: 8243060837207991589, guid: aad46d4b371a56c41aee92e8d950e243, type: 3}
