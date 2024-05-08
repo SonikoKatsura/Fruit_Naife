@@ -31,10 +31,11 @@ public class GameManager : MonoBehaviour {
         DecreaseLive();
 
         // TNT Explosion Sound
-        AudioManager.instance.PlaySFX("Explosion");
+        //AudioManager.instance.PlaySFX("Explosion");
 
         // TNT Explosion Effect
-        Instantiate(explosionParticles, transform.position, Quaternion.identity);
+        Instantiate(explosionParticles, position, Quaternion.identity);
+        Debug.Log("Explosion");
 
         // Check if Lose (wait some seconds and load Ranking Scene)
         CheckIfLose();
