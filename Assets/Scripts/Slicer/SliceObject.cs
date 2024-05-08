@@ -53,10 +53,10 @@ public class SliceObject : MonoBehaviour {
 
     // Gets current object mateial
     private void GetSetCrossSectionMaterial(GameObject target) {
-        Fruit Fruit = target.GetComponent<Fruit>();
+        SlicedMaterial slicedMaterial = target.GetComponent<SlicedMaterial>();
 
-        if (Fruit != null) {
-            Material fruitSectionMaterial = Fruit.GetCrossSectionMaterial();
+        if (slicedMaterial != null) {
+            Material fruitSectionMaterial = slicedMaterial.GetCrossSectionMaterial();
 
             if (fruitSectionMaterial != null) {
                 crossSectionMaterial = fruitSectionMaterial;
@@ -65,16 +65,16 @@ public class SliceObject : MonoBehaviour {
             }
         }
         else {
-            Debug.LogWarning("El GameObject no tiene el componente Fruit adjunto.");
+            Debug.LogWarning("Missing SlicedMaterial component");
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other != null) {
-            if (other.gameObject.CompareTag("Fruit")) {
-                Debug.Log("Fuit");
+            if (other.gameObject.CompareTag("Fruit") || other.gameObject.CompareTag("Barrel")) {
                 Slice(other.gameObject);
             }
+            Debug.Log(other.gameObject.name);
         }
     }
 }
