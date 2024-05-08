@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fruit
+  - Barrel
   layers:
   - Default
   - TransparentFX
