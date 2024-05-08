@@ -134,4 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slicedSectionMaterial: {fileID: 2100000, guid: b8de88fa6d9c97b438a3ee4e73c50d6b, type: 2}
-  slicedParticles: {fileID: 0}
+  slicedParticles: {fileID: 8243060837207991589, guid: b3066bb71a540e84bb3c672afe58af4d, type: 3}

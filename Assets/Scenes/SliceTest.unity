@@ -866,19 +866,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.67437977
+      value: 0.953717
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6743797
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.21263106
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.21263108
+      value: 0.30070576
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -890,7 +890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6464524286528547691, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_Name
@@ -911,7 +911,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6600896586383776476, guid: a4cede65ed266b04fa0faf95b14ff1e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.683
       objectReference: {fileID: 0}
     - target: {fileID: 6600896586383776476, guid: a4cede65ed266b04fa0faf95b14ff1e3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1027,6 +1027,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kiwi
       objectReference: {fileID: 0}
+    - target: {fileID: 223570128559023518, guid: 23f36babaaf0b224e8de7234996010b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8070107763622843823, guid: 23f36babaaf0b224e8de7234996010b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.048
@@ -1084,6 +1088,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pineapple
       objectReference: {fileID: 0}
+    - target: {fileID: 4189850654177195140, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8961787421412493941, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07
@@ -1140,6 +1148,10 @@ PrefabInstance:
     - target: {fileID: 1385394388269873718, guid: f37944d5dc0e2d94caa4d1137edc18c2, type: 3}
       propertyPath: m_Name
       value: Banana
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385394388269873718, guid: f37944d5dc0e2d94caa4d1137edc18c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6719128184406089021, guid: f37944d5dc0e2d94caa4d1137edc18c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1237,6 +1249,10 @@ PrefabInstance:
     - target: {fileID: 4606439163174450447, guid: 2f48faa764804244da83477d7fbcf3b4, type: 3}
       propertyPath: m_Name
       value: Mango
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606439163174450447, guid: 2f48faa764804244da83477d7fbcf3b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
