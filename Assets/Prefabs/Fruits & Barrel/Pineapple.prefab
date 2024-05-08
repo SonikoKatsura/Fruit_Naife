@@ -134,4 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2aad9905fc88d4f94a224f0fb46272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossSectionMaterial: {fileID: 2100000, guid: a3ae4c98743fbd941af9b5bfe9218c3d, type: 2}
+  crossSectionMaterial: {fileID: 2100000, guid: 5afbe389237d44341b68237ad4c88fb9, type: 2}
