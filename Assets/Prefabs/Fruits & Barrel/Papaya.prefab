@@ -133,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2aad9905fc88d4f94a224f0fb46272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossSectionMaterial: {fileID: 2100000, guid: e1e28740d0366244aad68a1b77822fe7, type: 2}
+  slicedSectionMaterial: {fileID: 2100000, guid: e1e28740d0366244aad68a1b77822fe7, type: 2}
+  slicedParticles: {fileID: 0}

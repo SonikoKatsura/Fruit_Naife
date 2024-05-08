@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField] int maxLives = 3;
     [SerializeField] int currentLives;
 
-    [SerializeField] string nextScene;
+    [SerializeField] ParticleSystem explosionParticles;
+
+    [SerializeField] string nextScene = "RankingScene";
 
 
     //SUSCRIPCIÓN al EVENTO
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour {
         AudioManager.instance.PlaySFX("Explosion");
 
         // TNT Explosion Effect
+        Instantiate(explosionParticles, transform.position, Quaternion.identity);
 
         // Check if Lose (wait some seconds and load Ranking Scene)
         CheckIfLose();
