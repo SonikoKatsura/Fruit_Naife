@@ -604,20 +604,28 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5788185540901025756, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
+      propertyPath: maxHeightOffset
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788185540901025756, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
+      propertyPath: minHeightOffset
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788185540901025756, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: _placementOffset
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6656284219641197434, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.910334
+      value: 11.379878
       objectReference: {fileID: 0}
     - target: {fileID: 6656284219641197434, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.4732823
+      value: -5.70982
       objectReference: {fileID: 0}
     - target: {fileID: 6656284219641197434, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.51822
+      value: 26.709963
       objectReference: {fileID: 0}
     - target: {fileID: 8598782491073411673, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -661,15 +669,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9124686858084323671, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.74525
+      value: 10.097408
       objectReference: {fileID: 0}
     - target: {fileID: 9124686858084323671, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.895037
+      value: 10.052843
       objectReference: {fileID: 0}
     - target: {fileID: 9124686858084323671, guid: b3c914c2ef744644cad2e746cb572aef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.138666
+      value: 20.032473
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
