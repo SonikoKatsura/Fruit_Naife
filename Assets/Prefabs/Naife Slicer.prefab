@@ -55,6 +55,9 @@ MonoBehaviour:
   defaultCrossSectionMaterial: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
   defaultCrossSectionParticles: {fileID: 8243060837207991589, guid: 9039058861feb1d4fa90a606e0a79c51, type: 3}
   cutForce: 100
+  destroyAfterDelay: 1
+  startFadeOut: 3
+  fadeOutDuration: 2
 --- !u!54 &6432473511876617178
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4b3ca809a0f9145b8fac92ed1b41e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  naifeParticles: {fileID: 4570727438426664243, guid: 9dfe5d25f65d1d6459f64ae99973135d, type: 3}
 --- !u!1 &3598386967522149077
 GameObject:
   m_ObjectHideFlags: 0

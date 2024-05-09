@@ -33,10 +33,6 @@ public class GameManager : MonoBehaviour {
         // TNT Explosion Sound
         //AudioManager.instance.PlaySFX("Explosion");
 
-        // TNT Explosion Effect
-        Instantiate(explosionParticles, position, Quaternion.identity);
-        Debug.Log("Explosion");
-
         // Check if Lose (wait some seconds and load Ranking Scene)
         CheckIfLose();
     }
