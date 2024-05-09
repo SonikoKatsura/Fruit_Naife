@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using static Naife;
+using static RandomObjectSelector;
 
 [ExecuteInEditMode]
-public class Spline : MonoBehaviour
-{
+public class Spline : MonoBehaviour {
     public Transform _start, _middle, _end;
 
     [SerializeField]
@@ -15,8 +16,7 @@ public class Spline : MonoBehaviour
     [SerializeField, Range(0.25f, 0.75f)]
     private float _placementOffset = 0.5f;
 
-    [SerializeField]
-    private GameObject objectPrefab;
+    //[SerializeField] private GameObject objectPrefab;
 
     [SerializeField]
     private Transform player;
@@ -27,18 +27,28 @@ public class Spline : MonoBehaviour
     [SerializeField]
     private float launchSpeed = 5f;
 
+    //SUSCRIPCIÓN al EVENTO
+    void OnEnable() {
+        RandomObjectSelector.OnThrownObject += LaunchObject;
+    }
+    //DESUSCRIPCIÓN al EVENTO
+    void OnDisable() {
+        RandomObjectSelector.OnThrownObject -= LaunchObject;
+    }
+
 #if UNITY_EDITOR
     private void Update()
     {
         #region Ver Parábola en update
-        Vector3 startPoint = _start.position;
+        /*Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
         CalculateMidPoint(startPoint, targetPosition);
+        */
         #endregion
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             LaunchObject();
-        }
+        }*/
     }
 #endif
 
@@ -75,7 +85,7 @@ public class Spline : MonoBehaviour
         }
     }
 
-    private void LaunchObject()
+    private void LaunchObject(GameObject objectPrefab)
     {
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
