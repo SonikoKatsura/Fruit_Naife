@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
+using Unity.VisualScripting;
 
 public class SliceObject : MonoBehaviour {
 
@@ -12,6 +13,11 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] Material defaultCrossSectionMaterial;
     [SerializeField] ParticleSystem defaultCrossSectionParticles;
     [SerializeField] float cutForce = 500;
+
+    [Header("Destroy Sliced Parts After Delay")]
+    [SerializeField] bool destroyAfterDelay = true;
+    [SerializeField] float startFadeOut = 3f;
+    [SerializeField] float fadeOutDuration = 2f;
 
     private Material crossSectionMaterial;
     private ParticleSystem crossSectionParticles;
@@ -46,6 +52,12 @@ public class SliceObject : MonoBehaviour {
 
             //Destroy original
             Destroy(target);
+
+            // Destroy sliced parts
+            if (destroyAfterDelay) {
+                FadeOutAndDestroy(upperHull);
+                FadeOutAndDestroy(lowerHull);
+            }            
         }
     }
 
@@ -89,4 +101,45 @@ public class SliceObject : MonoBehaviour {
             Debug.Log(other.gameObject.name);
         }
     }
+
+    #region FadeOut and destroy after delay
+    private void FadeOutAndDestroy(GameObject obj) {
+        Renderer renderer = obj.GetComponent<Renderer>();
+        if (renderer != null) {
+            Material[] materials = renderer.materials;
+            foreach (Material material in materials) {
+                StartCoroutine(FadeMaterial(material, fadeOutDuration));
+            }
+        }
+        // Destroy after delay
+        Destroy(obj, startFadeOut + fadeOutDuration);
+    }
+
+    private IEnumerator FadeMaterial(Material material, float duration) {
+        // Waits before start fading
+        yield return new WaitForSeconds(startFadeOut);
+
+        Color color = material.color;
+        float startAlpha = color.a;
+        float startTime = Time.time;
+
+        // Fade
+        while (Time.time < startTime + duration) {
+            float t = (Time.time - startTime) / duration;
+            color.a = Mathf.Lerp(startAlpha, 0f, t);
+            material.color = color;
+            yield return null;
+        }
+
+        // Complete transparency at the end
+        color.a = 0f;
+        material.color = color;
+    }
+    #endregion
+
+    #region Destroy after delay
+    /*private void DestroAfterDelay(GameObject obj) {
+        Destroy(obj, destroySlicedPartsDelay);
+    }*/
+    #endregion
 }

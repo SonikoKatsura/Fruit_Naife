@@ -203,6 +203,9 @@ MonoBehaviour:
   defaultCrossSectionMaterial: {fileID: 0}
   defaultCrossSectionParticles: {fileID: 0}
   cutForce: 1000
+  destroyAfterDelay: 1
+  startFadeOut: 3
+  fadeOutDuration: 2
 --- !u!4 &53498529
 Transform:
   m_ObjectHideFlags: 0
@@ -565,7 +568,7 @@ Transform:
   m_GameObject: {fileID: 1355567334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.84, y: 0.2177, z: 1.007}
+  m_LocalPosition: {x: 0.501, y: 0.107, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -580,10 +583,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1355567334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe25ec974c3b1f543b5704ae9e5e90b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a2aad9905fc88d4f94a224f0fb46272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfPoints: 1
+  slicedSectionMaterial: {fileID: 0}
+  slicedParticles: {fileID: 0}
 --- !u!1 &1468256042
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.154
       objectReference: {fileID: 0}
     - target: {fileID: 3121059542497024936, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1010,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5376610716705174123, guid: 448accc863ebb274fb02a237091cec07, type: 3}
+      propertyPath: destroySlicedPartsDelay
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1090,19 +1098,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4189850654177195140, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8961787421412493941, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.07
+      value: 0.773
       objectReference: {fileID: 0}
     - target: {fileID: 8961787421412493941, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.008
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 8961787421412493941, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.252
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8961787421412493941, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
       propertyPath: m_LocalRotation.w
