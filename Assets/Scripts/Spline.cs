@@ -24,14 +24,17 @@ public class Spline : MonoBehaviour
     [SerializeField]
     private float launchRadius = 2f;
 
+    [SerializeField]
+    private float launchSpeed = 5f;
+
 #if UNITY_EDITOR
     private void Update()
     {
+        #region Ver Parábola en update
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
         CalculateMidPoint(startPoint, targetPosition);
-
-
+        #endregion
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LaunchObject();
@@ -60,15 +63,6 @@ public class Spline : MonoBehaviour
         => CalculatePosition(interpolationAmount01,
             _start.position, _end.position, _middle.position);
 
-    public Vector3 CalculatePositionCustomStart(float interpolationAmount01,
-        Vector3 startPosition)
-        => CalculatePosition(interpolationAmount01,
-            startPosition, _end.position, _middle.position);
-
-    public Vector3 CalculatePositionCustomEnd(float interpolationAmount01,
-        Vector3 endPosition)
-        => CalculatePosition(interpolationAmount01,
-            _start.position, endPosition, _middle.position);
 
     public void SetPoints(Vector3 startPoint, Vector3 midPointPosition,
         Vector3 endPoint)
@@ -93,7 +87,7 @@ public class Spline : MonoBehaviour
 
     private IEnumerator LaunchObjectCoroutine(GameObject objectToLaunch, Vector3 startPoint, Vector3 endPoint)
     {
-        float duration = Vector3.Distance(startPoint, endPoint);
+        float duration = Vector3.Distance(startPoint, endPoint) / launchSpeed;
         float t = 0f;
 
         while (t < 1f)
