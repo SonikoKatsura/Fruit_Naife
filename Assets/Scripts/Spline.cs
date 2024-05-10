@@ -1,22 +1,23 @@
 using System.Collections;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using static Naife;
+using static RandomObjectSelector;
 
 [ExecuteInEditMode]
-public class Spline : MonoBehaviour
-{
+public class Spline : MonoBehaviour {
     public Transform _start, _middle, _end;
 
     [SerializeField]
     private bool showGizmos = true;
 
-    [SerializeField, Min(0.01f)]
-    private float _heightOffset = 1;
+    [SerializeField, Min(0.01f)] float minHeightOffset = 1f;
+    [SerializeField, Min(0.01f)] float maxHeightOffset = 2f;
 
     [SerializeField, Range(0.25f, 0.75f)]
     private float _placementOffset = 0.5f;
 
-    [SerializeField]
-    private GameObject objectPrefab;
+    //[SerializeField] private GameObject objectPrefab;
 
     [SerializeField]
     private Transform player;
@@ -27,18 +28,29 @@ public class Spline : MonoBehaviour
     [SerializeField]
     private float launchSpeed = 5f;
 
+    //SUSCRIPCIÓN al EVENTO
+    void OnEnable() {
+        RandomObjectSelector.OnThrownObject += LaunchObject;
+    }
+    //DESUSCRIPCIÓN al EVENTO
+    void OnDisable() {
+        RandomObjectSelector.OnThrownObject -= LaunchObject;
+    }
+
 #if UNITY_EDITOR
     private void Update()
     {
-        #region Ver Parábola en update
+        /*#region Ver Parábola en update
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
+        targetPosition.y = player.position.y;
         CalculateMidPoint(startPoint, targetPosition);
+        
         #endregion
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             LaunchObject();
-        }
+        }*/
     }
 #endif
 
@@ -46,7 +58,9 @@ public class Spline : MonoBehaviour
     {
         Vector3 end = targetPosition;
         Vector3 midPointPosition = Vector3.Lerp(startPoint, end, _placementOffset);
-        midPointPosition.y += _heightOffset;
+        // Random HeightOffset
+        float randHeight = Random.Range(minHeightOffset, maxHeightOffset +1);
+        midPointPosition.y += randHeight;
         SetPoints(startPoint, midPointPosition, end);
     }
 
@@ -75,10 +89,11 @@ public class Spline : MonoBehaviour
         }
     }
 
-    private void LaunchObject()
+    private void LaunchObject(GameObject objectPrefab)
     {
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
+        targetPosition.y = player.position.y;
         CalculateMidPoint(startPoint, targetPosition);
 
         GameObject newObject = Instantiate(objectPrefab, startPoint, Quaternion.identity);

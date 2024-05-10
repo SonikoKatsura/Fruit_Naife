@@ -967,7 +967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1468256043
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1447,10 +1447,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5376610716705174123, guid: 448accc863ebb274fb02a237091cec07, type: 3}
-      propertyPath: destroySlicedPartsDelay
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1708,8 +1704,8 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1574257517}
   - {fileID: 1468256046}
-  - {fileID: 1355567338}
   - {fileID: 53498529}
+  - {fileID: 1355567338}
   - {fileID: 7239285501914254104}
   - {fileID: 591648466779410187}
   - {fileID: 6700647104851989874}
