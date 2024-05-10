@@ -3,7 +3,27 @@ guid: 7a263cea01614494d945b20fc766260b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Banana
+    second: {fileID: 2100000, guid: 5bc0b8942509cb146b329d3b0b103e87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Top
+    second: {fileID: 2100000, guid: fb067ea617a030b4288e784480cf499d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Top2
+    second: {fileID: 2100000, guid: 81bfb2c2b78d9944a96c57af66c7dd58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bottom
+    second: {fileID: 2100000, guid: bde126ee62cb6d5498ae58c06e353026, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
