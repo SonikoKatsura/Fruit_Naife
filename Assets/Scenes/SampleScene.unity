@@ -421,10 +421,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 92632895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -125}
+  m_SizeDelta: {x: 210, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &710051487
 MonoBehaviour:
@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Naife Slicer
       objectReference: {fileID: 0}
+    - target: {fileID: 1081433780481683378, guid: 448accc863ebb274fb02a237091cec07, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1884162868127132246, guid: 448accc863ebb274fb02a237091cec07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -582,6 +586,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 448accc863ebb274fb02a237091cec07, type: 3}
+--- !u!1001 &1074732505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1067400667035231661, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_Name
+      value: OVRCameraRigInteraction Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21ab25c759eab804fabad703063444d3, type: 3}
 --- !u!1 &1079062023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1410098573
 Transform:
   m_ObjectHideFlags: 0
@@ -1109,314 +1170,6 @@ Transform:
   - {fileID: 1955943051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1503213777
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 43865947957023476, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 83094214176090516, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 278024372481258718, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 967204941143942304, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1045936797278217308, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1091623128452438547, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: _primaryInteractor
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1310139415628631944, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1882685014471476451, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895749021193859306, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931798452020047941, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2185164319814236350, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198449395622018906, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632496607829035287, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710847292365442664, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3287629999519968952, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: _requireOvrHands
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3405073548449289116, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Name
-      value: OVRCameraRigInteraction Naife
-      objectReference: {fileID: 0}
-    - target: {fileID: 3515911708913380696, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722355366176120894, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740732501577929914, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740732501612911356, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3972039252080090245, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_controller
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchProLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchPlusLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchProRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchPlusRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchRiftLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchRiftRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuest2LeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuest2RightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuestAndRiftSLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996547976118945500, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuestAndRiftSRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551046063860372085, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4591566346089213229, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: _interactors.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4591566346089213229, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: _interactors.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4591566346089213229, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: _interactors.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4591566346089213229, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: _interactors.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664309865641806300, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268651260803081695, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753042547733859552, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5881087506867286467, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6902762423001730935, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6928499632977898307, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7373411473839954712, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7891412230992692471, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463030436454262247, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626862648161900149, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8675824402495917312, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_controller
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchProLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchPlusLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchProRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelMetaTouchPlusRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchRiftLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchRiftRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuest2LeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuest2RightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuestAndRiftSLeftController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769875805543252571, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_modelOculusTouchQuestAndRiftSRightController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848100019777302884, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848100020751709452, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996712948914659447, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996712949067782471, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8490395428217050428, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-    - {fileID: 8237500305814389281, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-    - {fileID: 6771742414229446428, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-    - {fileID: 3740732501612911356, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-    - {fileID: 5753042547733859552, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-    - {fileID: 83094214176090516, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-    - {fileID: 2198449395622018906, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9acbe0c27f8980441bcfee4e6084a19c, type: 3}
 --- !u!1 &1518484525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,10 +1686,10 @@ RectTransform:
   - {fileID: 1518484526}
   m_Father: {fileID: 92632895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -385}
+  m_SizeDelta: {x: 210, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985942962
 MonoBehaviour:
@@ -2366,6 +2119,6 @@ SceneRoots:
   - {fileID: 1094398608045095718}
   - {fileID: 1107967609}
   - {fileID: 431824793}
-  - {fileID: 1503213777}
   - {fileID: 1822302961}
   - {fileID: 874582116}
+  - {fileID: 1074732505}
