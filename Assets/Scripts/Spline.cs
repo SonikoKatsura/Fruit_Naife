@@ -14,7 +14,7 @@ public class Spline : MonoBehaviour {
     [SerializeField, Min(0.01f)] float minHeightOffset = 1f;
     [SerializeField, Min(0.01f)] float maxHeightOffset = 2f;
 
-    [SerializeField, Range(0.25f, 0.75f)]
+    [SerializeField, Range(0.25f, 0.85f)]
     private float _placementOffset = 0.5f;
 
     //[SerializeField] private GameObject objectPrefab;
@@ -94,6 +94,7 @@ public class Spline : MonoBehaviour {
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
         targetPosition.y = player.position.y;
+      //  targetPosition.z = player.position.z;
         CalculateMidPoint(startPoint, targetPosition);
 
         GameObject newObject = Instantiate(objectPrefab, startPoint, Quaternion.identity);
