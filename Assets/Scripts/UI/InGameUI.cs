@@ -12,7 +12,7 @@ public class InGameUI : MonoBehaviour {
 
     void Start() {
 
-        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
         if (gameManager == null)
             Debug.Log("No hay GameManager");
     }
