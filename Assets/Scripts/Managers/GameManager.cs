@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
         currentLives = maxLives;
     }
     private void ResetPoints() {
-        currentPoints = maxLives;
+        currentPoints = 0;
     }
     private void DecreaseLive() {
         currentLives--;
