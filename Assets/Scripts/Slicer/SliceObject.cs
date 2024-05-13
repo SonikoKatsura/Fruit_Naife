@@ -95,7 +95,7 @@ public class SliceObject : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other != null) {
-            if (other.gameObject.CompareTag("Fruit") || other.gameObject.CompareTag("Barrel")) {
+            if (other.gameObject.CompareTag("Fruit") || other.gameObject.CompareTag("Barrel") || other.gameObject.CompareTag("Sliceable")) {
                 Slice(other.gameObject);
             }
             Debug.Log(other.gameObject.name);

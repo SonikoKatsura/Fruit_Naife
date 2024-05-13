@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fruit
   - Barrel
+  - Sliceable
   layers:
   - Default
   - TransparentFX
