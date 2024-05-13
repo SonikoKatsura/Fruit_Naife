@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28740507, g: 0.58149207, b: 0.8081353, a: 1}
+  m_IndirectSpecularColor: {r: 0.28846037, g: 0.5848299, b: 0.80848426, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24525,6 +24525,7 @@ Transform:
   - {fileID: 1998470345}
   - {fileID: 613761299}
   - {fileID: 96564808}
+  - {fileID: 2067288794}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440262896
@@ -35501,7 +35502,7 @@ GameObject:
   - component: {fileID: 2067288792}
   - component: {fileID: 2067288791}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35587,12 +35588,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067288790}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -201.884, y: 1.5, z: 499.5091}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -242.40637, y: -6.098467, z: 17.723053}
   m_LocalScale: {x: 391.22974, y: 1000.0125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1439654563}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &2068023812
 GameObject:
@@ -37474,4 +37475,3 @@ SceneRoots:
   - {fileID: 330947588}
   - {fileID: 871510256}
   - {fileID: 1082182366}
-  - {fileID: 2067288794}
