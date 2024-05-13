@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] string nextScene = "RankingScene";
 
+    [SerializeField] Cronometro crono;
+    [SerializeField] float cronoTime = 0f;
+
 
     //SUSCRIPCIÓN al EVENTO
     void OnEnable() {
@@ -28,6 +31,13 @@ public class GameManager : MonoBehaviour {
     void Start() {
         ResetLives();
         ResetPoints();
+
+        if (crono == null) {
+            crono = FindObjectOfType<Cronometro>();
+            if (crono == null)
+                Debug.Log("Missing Crono/Timer");
+        }
+        StartTimer();
     }
 
     private void OnHitBarrel(Vector3 position) {
@@ -63,15 +73,32 @@ public class GameManager : MonoBehaviour {
 
     private void CheckIfLose() {
         if (currentLives <= 0) {
+            cronoTime = crono.GetFloatCrono();
+            crono.StopCrono();
+
             // Load next scene waiting some seconds
             SCManager.instance.LoadSceneWaiting(nextScene);
         }
     }
 
+    #region Crono / timer
+    private void StartTimer() {
+        crono.StartCrono();
+    }
+    public float GetLastCronoTimeFloat() {
+        return cronoTime;
+    }
+    public string GetLastCronoTimeText() {
+        return crono.GetTransformTextCrono();
+    }
+    #endregion
+
+    #region UI Points & Lives
     public int GetPoints() {
         return currentPoints;
     }
     public int GetLives() {
         return currentLives;
     }
+    #endregion
 }

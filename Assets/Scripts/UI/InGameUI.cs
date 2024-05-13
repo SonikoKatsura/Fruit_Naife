@@ -11,10 +11,11 @@ public class InGameUI : MonoBehaviour {
     [SerializeField] TextMeshProUGUI livesTxt;
 
     void Start() {
-
-        gameManager = FindObjectOfType<GameManager>();
-        if (gameManager == null)
-            Debug.Log("No hay GameManager");
+        if (gameManager == null) {
+            gameManager = FindObjectOfType<GameManager>();
+            if (gameManager == null)
+                Debug.Log("No hay GameManager");
+        }
     }
 
     void Update() {
