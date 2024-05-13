@@ -25,7 +25,7 @@ public class RandomObjectSelector : MonoBehaviour {
     }
 
     public void ThrowObjects() {
-        
+        Debug.Log("-----Trhow-----");
         StartCoroutine(ThrowObjectWithDelay());
     }
 
