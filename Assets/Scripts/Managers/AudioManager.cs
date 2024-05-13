@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour {
     // Se crean dos AudioSources diferentes para que se puedan
     // reproducir los efectos y la música de fondo al mismo tiempo
     //public AudioSource sfxSource; // Componente AudioSource para efectos de sonido
-    //public AudioSource musicSource; // Componente AudioSource para la música de fondo
+    public AudioSource musicSource; // Componente AudioSource para la música de fondo
 
     // En vez de usar un vector de AudioClips (que podría ser) vamos a utilizar un Diccionario
     // en el que cargaremos directamente los recursos desde la jerarquía del proyecto
@@ -75,8 +75,12 @@ public class AudioManager : MonoBehaviour {
     // Método de la clase singleton para reproducir música de fondo
     public void PlayMusic(string clipName) {
         if (musicClips.ContainsKey(clipName)) {
-            // Metodo que crea un un nuevo audioSource, reproduce el sonido, espera a que termine y lo borra
-            PlaySoundAndDestroy(musicClips, clipName, true);
+            musicSource.clip = musicClips[clipName];
+            musicSource.Play();
+
+            #region new
+            //PlaySoundAndDestroy(musicClips, clipName, true);
+            #endregion
         }
         else Debug.LogWarning("El AudioClip " + clipName + " no se encontró en el diccionario de musicClips.");
     }
