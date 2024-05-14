@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Settings_button : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void SettingsButton()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene("Settings"); // Call the LoadScene method of the SceneManager class to load a scene named "map"
     }
 }

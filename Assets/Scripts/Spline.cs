@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [ExecuteInEditMode]
 public class Spline : MonoBehaviour {
@@ -23,6 +24,9 @@ public class Spline : MonoBehaviour {
     [SerializeField]
     private float launchRadius = 2f;
 
+    [SerializeField, Range(-0.25f, 0.25f)]
+    float zOffset = -0.1f;
+
     [SerializeField]
     private float launchSpeed = 5f;
 
@@ -35,6 +39,28 @@ public class Spline : MonoBehaviour {
         RandomObjectSelector.OnThrownObject -= LaunchObject;
     }
 
+    private void Start() {
+        if (player == null) {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            if (player == null)
+                Debug.Log("No hay Target / Player");
+        }
+    }
+
+    #if UNITY_EDITOR
+    /*private void Update() {
+        #region Ver Parábola en update
+        Vector3 startPoint = _start.position;
+        Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
+        // Static y, z position
+        targetPosition.y = player.position.y;
+        targetPosition.z = player.position.z + zOffset;
+        CalculateMidPoint(startPoint, targetPosition);
+        
+        #endregion
+    }*/
+    #endif
+
     public void CalculateMidPoint(Vector3 startPoint, Vector3 targetPosition) {
         Vector3 end = targetPosition;
         Vector3 midPointPosition = Vector3.Lerp(startPoint, end, _placementOffset);
@@ -44,8 +70,7 @@ public class Spline : MonoBehaviour {
         SetPoints(startPoint, midPointPosition, end);
     }
 
-    private Vector3 CalculatePosition(float value01, Vector3 startPos,
-        Vector3 endPos, Vector3 midPos) {
+    private Vector3 CalculatePosition(float value01, Vector3 startPos, Vector3 endPos, Vector3 midPos) {
         value01 = Mathf.Clamp01(value01);
         Vector3 startMiddle = Vector3.Lerp(startPos, midPos, value01);
         Vector3 middleEnd = Vector3.Lerp(midPos, endPos, value01);
@@ -68,7 +93,9 @@ public class Spline : MonoBehaviour {
     private void LaunchObject(GameObject objectPrefab) {
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
+        // Static y, z position
         targetPosition.y = player.position.y;
+        targetPosition.z = player.position.z + zOffset;
 
         // Calcula el punto medio para este lanzamiento específico
         Vector3 midPointPosition = Vector3.Lerp(startPoint, targetPosition, _placementOffset);
@@ -85,7 +112,9 @@ public class Spline : MonoBehaviour {
 
         while (t < 1f) {
             t += Time.deltaTime / duration;
-            objectToLaunch.transform.position = CalculatePosition(t, startPoint, endPoint, midPoint);
+            if (objectToLaunch != null) {
+                objectToLaunch.transform.position = CalculatePosition(t, startPoint, endPoint, midPoint);
+            }            
             yield return null;
         }
 
