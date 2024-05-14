@@ -5,6 +5,15 @@ using UnityEngine;
 public class LookAtPlayer : MonoBehaviour {
     [SerializeField] Transform target;
 
+    private void Start() {
+        if (target == null) {
+            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            if (target == null)
+                Debug.Log("No hay Target / Player");
+        }
+
+    }
+
     void Update() {
         if (target != null) {
             // Obtener la dirección hacia el jugador
