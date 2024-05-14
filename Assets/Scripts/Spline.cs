@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [ExecuteInEditMode]
 public class Spline : MonoBehaviour {
@@ -33,6 +34,14 @@ public class Spline : MonoBehaviour {
     //DESUSCRIPCIÓN al EVENTO
     void OnDisable() {
         RandomObjectSelector.OnThrownObject -= LaunchObject;
+    }
+
+    private void Start() {
+        if (player == null) {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            if (player == null)
+                Debug.Log("No hay Target / Player");
+        }
     }
 
     public void CalculateMidPoint(Vector3 startPoint, Vector3 targetPosition) {

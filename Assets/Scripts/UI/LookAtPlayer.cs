@@ -11,7 +11,6 @@ public class LookAtPlayer : MonoBehaviour {
             if (target == null)
                 Debug.Log("No hay Target / Player");
         }
-
     }
 
     void Update() {
