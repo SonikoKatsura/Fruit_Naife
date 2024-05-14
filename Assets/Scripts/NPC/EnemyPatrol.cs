@@ -36,7 +36,6 @@ public class EnemyPatrol: MonoBehaviour
         _NavMesh.triangles = triangles.indices;
         
 
-        _Agent.autoTraverseOffMeshLink = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         RandomDestination();
         StartCoroutine(Patrol());
