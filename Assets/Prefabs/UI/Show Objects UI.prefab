@@ -1300,6 +1300,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Clipp
       m_Image: {fileID: 0}
+    - m_Text: Cheese
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1382,7 +1384,8 @@ MonoBehaviour:
   - {fileID: 4606439163174450447, guid: 2f48faa764804244da83477d7fbcf3b4, type: 3}
   - {fileID: 6464524286528547691, guid: 749e857d9d7bc954185302dc1f34fb7c, type: 3}
   - {fileID: 4189850654177195140, guid: 572cfca300a274b4aad1df30153ff812, type: 3}
-  - {fileID: 5857468483079913973, guid: e13e8c9a6b120db49829613301654275, type: 3}
+  - {fileID: 1992638022534068925, guid: 6adec39581e77f445a0294e44e8f484d, type: 3}
+  - {fileID: 906560639655419731, guid: 98d6d9a52f56d4942b0fe790968ed954, type: 3}
   spawnPosition: {x: -1, y: 1.25, z: -1}
   spawnRotation: {x: 45, y: 45, z: 0}
   spawnScale: {x: 0.5, y: 0.5, z: 0.5}

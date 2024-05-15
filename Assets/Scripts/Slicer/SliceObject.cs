@@ -98,7 +98,7 @@ public class SliceObject : MonoBehaviour {
             if (other.gameObject.CompareTag("Fruit") || other.gameObject.CompareTag("Barrel") || other.gameObject.CompareTag("Sliceable")) {
                 Slice(other.gameObject);
             }
-            Debug.Log(other.gameObject.name);
+            //Debug.Log(other.gameObject.name);
         }
     }
 

@@ -11,6 +11,10 @@ public class Naife : MonoBehaviour {
     public delegate void HitFruit(int amountOfPoints);
     public static event HitFruit OnHitFruit;    //(EVENTO)
 
+    //EVENTO (DELEGADO)   --> Vibration
+    public delegate void Vibration();
+    public static event Vibration OnVibration;    //(EVENTO)
+
     [SerializeField] ParticleSystem naifeParticles;
 
     private void OnTriggerEnter(Collider other) {
@@ -39,10 +43,15 @@ public class Naife : MonoBehaviour {
                 if (OnHitFruit != null)
                     OnHitFruit(fruitPoints);
             }
-            
-            Debug.Log(other.gameObject.name);
+
+            // Event Vibration
+            if (OnVibration != null)
+                OnVibration();
+
+            //Debug.Log(other.gameObject.name);
         }
     }
+
 
     private void NaifeCollisionEffects() {
         // Play sound

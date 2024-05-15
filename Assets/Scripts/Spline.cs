@@ -30,6 +30,8 @@ public class Spline : MonoBehaviour {
     [SerializeField]
     private float launchSpeed = 5f;
 
+    [SerializeField] private float rotationSpeed = 45f; // Degrees per second
+
     //SUSCRIPCIÓN al EVENTO
     void OnEnable() {
         RandomObjectSelector.OnThrownObject += LaunchObject;
@@ -110,11 +112,28 @@ public class Spline : MonoBehaviour {
         float duration = Vector3.Distance(startPoint, endPoint) / launchSpeed;
         float t = 0f;
 
+        #region rotation lerp
+        // Start / End Random rotation
+        //Quaternion initialRotation = objectToLaunch.transform.rotation;
+        //Quaternion randomRotation = Random.rotation;
+        #endregion
+
         while (t < 1f) {
             t += Time.deltaTime / duration;
             if (objectToLaunch != null) {
                 objectToLaunch.transform.position = CalculatePosition(t, startPoint, endPoint, midPoint);
-            }            
+
+                #region Incremental rotation
+                // Incremental rotation
+                objectToLaunch.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.Self);
+                objectToLaunch.transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime, Space.Self);
+                objectToLaunch.transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime, Space.Self);
+                #endregion
+                #region rotation lerp
+                // Random rotation
+                //objectToLaunch.transform.rotation = Quaternion.Slerp(initialRotation, randomRotation, t);
+                #endregion
+            }
             yield return null;
         }
 
