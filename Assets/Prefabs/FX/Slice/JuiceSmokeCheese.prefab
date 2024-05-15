@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 0.39215687}
+      maxColor: {r: 1, g: 0.96862745, b: 0.8, a: 0.39215687}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4901,7 +4901,7 @@ GameObject:
   - component: {fileID: 5549943152128909437}
   - component: {fileID: 7065136232861468067}
   m_Layer: 0
-  m_Name: JuiceSmokeBarrel
+  m_Name: JuiceSmokeCheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5114,7 +5114,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5, g: 0.23427673, b: 0.1014151, a: 0.19607843}
+      maxColor: {r: 1, g: 0.9685207, b: 0.7971698, a: 0.19607843}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10015,7 +10015,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 0.5882353}
+      maxColor: {r: 1, g: 0.96862745, b: 0.8, a: 0.5882353}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
