@@ -2,7 +2,6 @@ using Oculus.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Naife;
 
 public class GameManager : MonoBehaviour {
     [SerializeField] int maxLives = 3;
@@ -13,29 +12,38 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] string nextScene = "RankingScene";
 
-    [SerializeField] Cronometro crono;
-    [SerializeField] float cronoTime = 0f;
+    [Header("Timer")]
+    [SerializeField] Timer timer;
+    [SerializeField] float timerTime = 0f;
 
+    [Header("Crono")]
+    [SerializeField] Crono crono;
+    private Coroutine _cronoCoroutine;
+
+    private bool _hasMultiplier = false;
+    private int _pointsMultiplier = 1;
 
     //SUSCRIPCIÓN al EVENTO
     void OnEnable() {
         Naife.OnHitBarrel += OnHitBarrel;
         Naife.OnHitFruit += OnHitFruit;
+        DoublePoints.OnDoublePoints += StartDoublePoints;
     }
     //DESUSCRIPCIÓN al EVENTO
     void OnDisable() {
         Naife.OnHitBarrel -= OnHitBarrel;
         Naife.OnHitFruit -= OnHitFruit;
+        DoublePoints.OnDoublePoints -= StartDoublePoints;
     }
 
     void Start() {
         ResetLives();
         ResetPoints();
 
-        if (crono == null) {
-            crono = FindObjectOfType<Cronometro>();
-            if (crono == null)
-                Debug.Log("Missing Crono/Timer");
+        if (timer == null) {
+            timer = FindObjectOfType<Timer>();
+            if (timer == null)
+                Debug.Log("Missing Timer");
         }
         StartTimer();
     }
@@ -68,13 +76,35 @@ public class GameManager : MonoBehaviour {
         currentLives--;
     }
     private void AddPoints(int amountOfPoints) {
-        currentPoints += amountOfPoints;
+        if (_hasMultiplier) {
+            currentPoints += amountOfPoints * _pointsMultiplier;
+        } else {
+            currentPoints += amountOfPoints;
+        }
+    }
+
+    private void StartDoublePoints(int multiplier, float duration) {
+        if (!_hasMultiplier) {
+            _hasMultiplier = true;
+            _pointsMultiplier = multiplier;
+            _cronoCoroutine = StartCoroutine(StartDoublePointsCrono(duration));
+        }
+        if (_hasMultiplier) {
+            StopCoroutine(_cronoCoroutine);
+            _pointsMultiplier = multiplier;
+            _cronoCoroutine = StartCoroutine(StartDoublePointsCrono(duration));
+        }
+    }
+    private IEnumerator StartDoublePointsCrono(float duration) {
+        crono.StartCrono(duration);
+        yield return new WaitForSeconds(duration);
+        _hasMultiplier = false;
     }
 
     private void CheckIfLose() {
         if (currentLives <= 0) {
-            cronoTime = crono.GetFloatCrono();
-            crono.StopCrono();
+            timerTime = timer.GetFloatTimer();
+            timer.StopTimer();
 
             // Load next scene waiting some seconds
             SCManager.instance.LoadSceneWaiting(nextScene);
@@ -83,13 +113,13 @@ public class GameManager : MonoBehaviour {
 
     #region Crono / timer
     private void StartTimer() {
-        crono.StartCrono();
+        timer.StartTimer();
     }
     public float GetLastCronoTimeFloat() {
-        return cronoTime;
+        return timerTime;
     }
     public string GetLastCronoTimeText() {
-        return crono.GetTransformTextCrono();
+        return timer.GetTransformTextTimer();
     }
     #endregion
 

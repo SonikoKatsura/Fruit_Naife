@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 7763349429465878219}
   m_Layer: 0
   m_Name: Edge
-  m_TagString: Untagged
+  m_TagString: Naife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6322268759764860097}
   - component: {fileID: 2229589621348660254}
   - component: {fileID: 2436096341645329211}
+  - component: {fileID: -6344961721672033253}
   m_Layer: 0
   m_Name: Clipp
   m_TagString: Fruit
@@ -135,3 +136,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slicedSectionMaterial: {fileID: 2100000, guid: 9f3aaf4f38f21af47886d5f338f2d7a8, type: 2}
   slicedParticles: {fileID: 8243060837207991589, guid: 8c4d70e9f98841647b064ebfdceb64b2, type: 3}
+--- !u!114 &-6344961721672033253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992638022534068925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7fa799024083d44bf1e8f6df40010a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 2
+  duration: 15

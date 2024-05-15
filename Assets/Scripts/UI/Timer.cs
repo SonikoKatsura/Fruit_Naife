@@ -2,42 +2,42 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Cronometro : MonoBehaviour {
-    public TextMeshProUGUI textCrono; // Referencia al objeto Texto en la UI
+public class Timer : MonoBehaviour {
+    public TextMeshProUGUI textTimer; // Referencia al objeto Texto en la UI
 
     private float tiempoPasado = 0f;
     private bool cronometroActivo = false;
 
     void Start() {
         // Comenzar el cronómetro automáticamente
-        //StartCrono();
+        //StartTimer();
     }
 
     void Update() {
         if (cronometroActivo) {
             tiempoPasado += Time.deltaTime;
-            UpdateTextCrono();
+            UpdateTextTimer();
         }
     }
 
-    public void StartCrono() {
+    public void StartTimer() {
         cronometroActivo = true;
     }
 
-    public void StopCrono() {
+    public void StopTimer() {
         cronometroActivo = false;
     }
 
-    public void ResetCrono() {
+    public void ResetTimer() {
         tiempoPasado = 0f;
-        UpdateTextCrono();
+        UpdateTextTimer();
     }
 
-    public float GetFloatCrono() {
+    public float GetFloatTimer() {
         return tiempoPasado;
     }
 
-    public string GetTransformTextCrono() {
+    public string GetTransformTextTimer() {
         int minutos = Mathf.FloorToInt(tiempoPasado / 60f);
         int segundos = Mathf.FloorToInt(tiempoPasado % 60f);
         int milisegundos = Mathf.FloorToInt((tiempoPasado * 1000) % 1000) / 100; // Dividir por 100 para reducir el nº de digitos;
@@ -47,8 +47,8 @@ public class Cronometro : MonoBehaviour {
         return tiempoFormateado;
     }
 
-    private void UpdateTextCrono() {
+    private void UpdateTextTimer() {
         // Actualizar el texto en la UI
-        textCrono.text = GetTransformTextCrono();
+        textTimer.text = GetTransformTextTimer();
     }
 }

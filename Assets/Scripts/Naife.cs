@@ -40,7 +40,7 @@ public class Naife : MonoBehaviour {
                     OnHitFruit(fruitPoints);
             }
             
-            Debug.Log(other.gameObject.name);
+            //Debug.Log(other.gameObject.name);
         }
     }
 
