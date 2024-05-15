@@ -1977,6 +1977,7 @@ MonoBehaviour:
   OnThrow:
     m_PersistentCalls:
       m_Calls: []
+  baskets: []
 --- !u!114 &184712466
 MonoBehaviour:
   m_ObjectHideFlags: 0
