@@ -49,6 +49,9 @@ public class HapticManager : MonoBehaviour {
         // Los recursos (ASSETS) que se cargan en TIEMPO DE EJECUCIÓN DEBEN ESTAR DENTRO de una carpeta denominada /Assets/Resources/SFX
         hapticsClips["sword"] = Resources.Load<HapticClip>("Haptics/sword_hit");
         hapticsClips["explosion"] = Resources.Load<HapticClip>("Haptics/explosion");
+        hapticsClips["explosion_16"] = Resources.Load<HapticClip>("Haptics/explosion_16");
+        hapticsClips["explosion_2"] = Resources.Load<HapticClip>("Haptics/explosion_2");
+
         hapticsClips["Rumble1"] = Resources.Load<HapticClip>("Haptics/RumbleClip1");
         hapticsClips["Rumble2"] = Resources.Load<HapticClip>("Haptics/RumbleClip2");
     }

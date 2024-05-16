@@ -22,7 +22,7 @@ public class Naife : MonoBehaviour {
                 NaifeCollisionEffects();
 
                 // Vibration
-                HapticManager.instance.PlayHapticClip("explosion", rightHand);
+                HapticManager.instance.PlayHapticClip("explosion_2", rightHand);
 
                 // Event hit TNT Barrel
                 if (OnHitBarrel != null)
@@ -57,7 +57,7 @@ public class Naife : MonoBehaviour {
         //AudioManager.instance.PlaySFX("Cut");
 
         Vector3 swordTipPosition = this.transform.position;                     // Position        
-        Quaternion rotationOffset = Quaternion.Euler(0f, -90f, 0f);             // Particle rotation offset
+        Quaternion rotationOffset = Quaternion.Euler(0f, -90f, 90f);             // Particle rotation offset
         Quaternion swordRotation = this.transform.rotation * rotationOffset;    // Fixed rotation
 
         // PLay Particle system Effect

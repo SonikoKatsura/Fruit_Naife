@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   naifeParticles: {fileID: 4570727438426664243, guid: 9dfe5d25f65d1d6459f64ae99973135d, type: 3}
+  rightHand: 0
 --- !u!1 &3598386967522149077
 GameObject:
   m_ObjectHideFlags: 0
