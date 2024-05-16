@@ -10,22 +10,19 @@ using Random = UnityEngine.Random;
 
 public class EnemyPatrol: MonoBehaviour
 {
-    [SerializeField] Vector3 min, max;
-    Vector3 destination;
-    [SerializeField] float playerDetectionDistance, playerAttackDistance;
-    Transform player;
-    [SerializeField] float visionAngle;
+    [SerializeField] Vector3 destination, throwarea;
+    [SerializeField] float throwduration, pickduration;
    
    [SerializeField]
     private NavMeshAgent _Agent;
 
     public event Action<float> OnSpeedChanged;
 
+    private int basketcounter;
+
+    private bool _IsPicking = false;
     private bool _IsThrowing = false;
     private Mesh _NavMesh;
-    [SerializeField]
-    private float _jumpDuration = 0.8f;
-    public event Action<Vector3> DestinationGet;
     public UnityEvent OnPick, OnThrow;
 
     [SerializeField]
@@ -43,97 +40,89 @@ public class EnemyPatrol: MonoBehaviour
         baskets = GameObject.FindGameObjectsWithTag("Baskets");
 
         StartCoroutine(Patrol());
-        StartCoroutine(Alert());
     }
 
     void Update()
     {
-       
+
     }
 
-  
 
-IEnumerator Patrol()
+
+    IEnumerator Patrol()
     {
+        destination = GetRandomBasketPosition();
         GetComponent<NavMeshAgent>().SetDestination(destination);
         while (true)
         {
-            OnSpeedChanged?.Invoke(
-                   Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
+            OnSpeedChanged?.Invoke(Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
 
-            if (_IsThrowing)
+            if (Vector3.Distance(transform.position, destination) < 0.5f)
             {
-                FaceTarget(_Agent.currentOffMeshLinkData.endPos);
-            }
-            if (Vector3.Distance(transform.position, destination) < 1.5f)
-            {
+                _Agent.isStopped = true;
                 GetComponent<Animator>().SetFloat("velocity", 0);
-                yield return new WaitForSeconds(Random.Range(1f, 3f));
+                StopCoroutine(Patrol());
+                StartCoroutine(PickUp());
   
             }
             yield return new WaitForEndOfFrame();
         }
     }
 
-    IEnumerator Alert()
+    IEnumerator Throw()
     {
-        while (true)
+        _IsThrowing = true;
+        if (_IsThrowing)
         {
-            OnSpeedChanged?.Invoke(
-                   Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
+            GetComponent<Animator>().SetTrigger("throwing");
+            FaceTarget(_Agent.currentOffMeshLinkData.endPos);
 
-            if (_IsThrowing)
-            {
-                FaceTarget(_Agent.currentOffMeshLinkData.endPos);
-            }
-            if (Vector3.Distance(transform.position, player.position) < playerDetectionDistance)
-            {
-                Vector3 vectorPlayer = player.position - transform.position;
-                if (Vector3.Angle(vectorPlayer.normalized, transform.forward) < visionAngle)
-                {
-                    Debug.Log("Personaje detectado");
-                    StopCoroutine(Patrol());
-                    StartCoroutine(Attack());
-                    break;
-                }
-            }
-            yield return new WaitForEndOfFrame();
+
+            yield return new WaitForSeconds(throwduration);
         }
+
+        yield return new WaitForEndOfFrame();
     }
 
-    IEnumerator Attack()
+    IEnumerator PickUp()
     {
-        while (true)
+        _IsPicking = true;
+        while (_IsPicking)
         {
-            OnSpeedChanged?.Invoke(
-                    Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
-            if (_IsThrowing)
+            GetComponent<Animator>().SetTrigger("pick");
+            yield return new WaitForSeconds(pickduration);
+            basketcounter++;
+            if (basketcounter > 2)
             {
-                FaceTarget(_Agent.currentOffMeshLinkData.endPos);
-            }
-            if (Vector3.Distance(transform.position, player.position) > playerDetectionDistance)
-            {
-                StartCoroutine(Patrol());
-                StartCoroutine(Alert());
-                break;
-            }
-            if (Vector3.Distance(transform.position, player.position) < playerAttackDistance)
-            {
-                GetComponent<NavMeshAgent>().SetDestination(transform.position);
-                GetComponent<NavMeshAgent>().velocity = Vector3.zero;
-                GetComponent<Animator>().SetBool("attack", true);
-                yield return new WaitForSeconds(3);
-                Debug.Log("Ataque");
+                StopCoroutine(PickUp());
+                StartCoroutine(GoThrow());
             }
             else
             {
-                GetComponent<NavMeshAgent>().SetDestination(player.position);
-                GetComponent<Animator>().SetBool("attack", false);
+                StopCoroutine(PickUp());
+                StartCoroutine(Patrol());
             }
-            yield return new WaitForEndOfFrame();
         }
     }
+    IEnumerator GoThrow()
+    {
+         Vector3 targetPosition = throwarea + Random.insideUnitSphere * 2f;
+         GetComponent<NavMeshAgent>().SetDestination(targetPosition);
+         while (true)
+         {
+            OnSpeedChanged?.Invoke(Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
+            if (Vector3.Distance(transform.position, destination) < 0.2f)
+            {
+                _Agent.isStopped = true;
+                GetComponent<Animator>().SetFloat("velocity", 0);
+                StopCoroutine(Patrol());
+                StartCoroutine(Throw());
 
+            }
+
+        }
+        yield return new WaitForEndOfFrame();
+    }
 
     void FaceTarget(Vector3 target)
     {
@@ -142,6 +131,12 @@ IEnumerator Patrol()
             = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation
             = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+    }
+
+    private Vector3 GetRandomBasketPosition()
+    {
+        int index = Random.Range(0, baskets.Length);
+        return baskets[index].transform.position;
     }
 
 }
