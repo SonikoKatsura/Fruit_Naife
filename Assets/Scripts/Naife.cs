@@ -11,17 +11,18 @@ public class Naife : MonoBehaviour {
     public delegate void HitFruit(int amountOfPoints);
     public static event HitFruit OnHitFruit;    //(EVENTO)
 
-    //EVENTO (DELEGADO)   --> Vibration
-    public delegate void Vibration();
-    public static event Vibration OnVibration;    //(EVENTO)
-
     [SerializeField] ParticleSystem naifeParticles;
+    [SerializeField] bool rightHand;
+
 
     private void OnTriggerEnter(Collider other) {
         if (other != null) {
             if (other.gameObject.CompareTag("Barrel")) {
                 // Naife Effects
                 NaifeCollisionEffects();
+
+                // Vibration
+                HapticManager.instance.PlayHapticClip("explosion", rightHand);
 
                 // Event hit TNT Barrel
                 if (OnHitBarrel != null)
@@ -39,24 +40,21 @@ public class Naife : MonoBehaviour {
                 // Naife Effects
                 NaifeCollisionEffects();
 
+                // Vibration
+                HapticManager.instance.PlayHapticClip("sword", rightHand);
+
                 // Event hit Fruit
                 if (OnHitFruit != null)
                     OnHitFruit(fruitPoints);
             }
 
-            // Event Vibration
-            if (OnVibration != null)
-                OnVibration();
-
             //Debug.Log(other.gameObject.name);
         }
     }
 
-
     private void NaifeCollisionEffects() {
         // Play sound
         //AudioManager.instance.PlaySFX("Cut");
-
 
         Vector3 swordTipPosition = this.transform.position;                     // Position        
         Quaternion rotationOffset = Quaternion.Euler(0f, -90f, 0f);             // Particle rotation offset
