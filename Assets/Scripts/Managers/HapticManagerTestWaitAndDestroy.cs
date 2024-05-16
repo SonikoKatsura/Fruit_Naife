@@ -1,4 +1,5 @@
 using Oculus.Haptics;
+using Oculus.Interaction.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,13 @@ using UnityEngine;
 // ---------------------------------------------------------------------------------
 // SCRIPT PARA LA GESTIÓN DE AUDIO (vinculado a un GameObject vacío "AudioManager")
 // ---------------------------------------------------------------------------------
-public class HapticManager : MonoBehaviour {
-    private HapticClipPlayer player;
-    private HapticClip clip;
-
+public class HapticManagerTestWaitAndDestroy : MonoBehaviour {
 
     // Instancia única del AudioManager (porque es una clase Singleton) STATIC
-    public static HapticManager instance;
+    public static HapticManagerTestWaitAndDestroy instance;
+
+    private HapticClipPlayer player;
+    public HapticClip clip;
 
     // En vez de usar un vector de HapticClips (que podría ser) vamos a utilizar un Diccionario
     // en el que cargaremos directamente los recursos desde la jerarquía del proyecto
@@ -36,24 +37,19 @@ public class HapticManager : MonoBehaviour {
 
         // Cargamos los AudioClips en los diccionarios
         LoadHapticClips();
-
-    }
-
-    private void Start() {
-        /* Comentar si se añaden más músicas - gestionarlo desde el GameManager */
-        //PlayMusic("Title");  // Reproduce la música principal
     }
 
     // Método privado para cargar los efectos de sonido directamente desde las carpetas
     private void LoadHapticClips() {
         // Los recursos (ASSETS) que se cargan en TIEMPO DE EJECUCIÓN DEBEN ESTAR DENTRO de una carpeta denominada /Assets/Resources/SFX
-        hapticsClips["sword"] = Resources.Load<HapticClip>("Haptics/sword_hit");
-        hapticsClips["explosion"] = Resources.Load<HapticClip>("Haptics/explosion");
         hapticsClips["Rumble1"] = Resources.Load<HapticClip>("Haptics/RumbleClip1");
         hapticsClips["Rumble2"] = Resources.Load<HapticClip>("Haptics/RumbleClip2");
     }
 
-    // Método de la clase singleton para reproducir vibraciones
+    void Start() {
+        //player = new HapticClipPlayer(clip);
+    }
+
     public void PlayHapticClip() {
         player.Play(Controller.Both);
     }
@@ -62,32 +58,44 @@ public class HapticManager : MonoBehaviour {
             player.Play(Controller.Right);
         else
             player.Play(Controller.Left);
-    }
-    public void PlayHapticClip(string clipName, bool rightHand) {
-        if (hapticsClips.ContainsKey(clipName)) {
-            // Obtiene el clip del diccionario
-            clip = hapticsClips[clipName];
-
-            // Asigna el clip al HapticClipPlayer
-            player = new HapticClipPlayer(clip);
-
-            if (rightHand)
-                player.Play(Controller.Right);
-            else
-                player.Play(Controller.Left);
-        }
-        else Debug.LogWarning("El HapticClip " + clipName + " no se encontró en el diccionario de hapticsClips.");
+       
+        //PlayHapticClipAndDestroy(rightHand);
     }
 
     public void StopHaptics() {
         player.Stop();
     }
 
-    private void OnDestroy() {
-        player.Dispose();
+    #region Create new AudioSource, Play Sound, Wait and Destroy
+    /*private void PlayHapticClipAndDestroy(Dictionary<string, HapticClip> dictionaryClips, string clipName, bool rightHand) {
+        //Debug.Log(clipName + ", " + loop);
+
+        // Obtiene el nuevo HapticClip
+        //HapticClip clip = dictionaryClips[clipName];*/
+    public void PlayHapticClipAndDestroy(/*Dictionary<string, HapticClip> dictionaryClips, string clipName,*/ bool rightHand) {
+        // Crear un nuevo HapticClipPlayer
+        HapticClipPlayer hapticPlayer = new HapticClipPlayer(clip);
+
+        // Reproducir la vibración
+        if (rightHand)
+            hapticPlayer.Play(Controller.Right);
+        else
+            hapticPlayer.Play(Controller.Left);
+
+        //Corrutina que espere el tiempo del clip y lo borre
+        float timeClip = hapticPlayer.clipDuration;
+
+        Debug.Log("Play");
+        // Autodestruir el HapticClipPlayer después de que termine de reproducir el Clip
+        StartCoroutine(WaitAndDisposeHapticClipPlayer(hapticPlayer, timeClip));
     }
 
-    private void OnApplicationQuit() {
-        Haptics.Instance.Dispose();
+    private IEnumerator WaitAndDisposeHapticClipPlayer(HapticClipPlayer hapticPlayer, float timeClip) {
+        Debug.Log("Start");
+        yield return new WaitForSeconds(timeClip);
+        Debug.Log("End");
+        hapticPlayer.Stop();
+        hapticPlayer.Dispose();
     }
-}
+    #endregion
+ }
