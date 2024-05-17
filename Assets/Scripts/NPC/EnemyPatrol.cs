@@ -1,30 +1,41 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using static Naife;
+using static RandomObjectSelector;
 using Random = UnityEngine.Random;
 
-public class EnemyPatrol : MonoBehaviour
-{
+public class EnemyPatrol : MonoBehaviour {
+    //EVENTO (DELEGADO)   --> Throw Object
+    public delegate void ThrownObject(GameObject obj);
+    public static event ThrownObject OnThrownObject;    //(EVENTO)
+
     // Variables para destino, área de lanzamiento y jugador
     [SerializeField] Transform destination, throwarea, player;
     // Duración de las animaciones de lanzar y recoger
-    [SerializeField] float throwduration, pickduration;
+    [SerializeField] float pickduration;
     // Agente de navegación
     [SerializeField] private NavMeshAgent agent;
     // Array de cestas
     [SerializeField] private GameObject[] baskets;
 
-    // Eventos para cambios de velocidad y acciones específicas
-    public event Action<float> OnSpeedChanged;
-    public UnityEvent OnPick, OnThrow;
+    [Header("Throw")]
+    [SerializeField] List<GameObject> objectList;
+    [SerializeField] float throwAnimDelay = 0.625f;
 
-    // Contador de cestas recogidas
-    private int basketCounter = 0;
+    [SerializeField] int minObjectsToThrow = 1;
+    [SerializeField] int maxObjectsToThrow = 10;
+
+    [SerializeField] float minTimeBetweenThrows = 1f;
+    [SerializeField] float maxTimeBetweenThrows = 2f;
+
     // Banderas para controlar el estado del enemigo
     private bool isPicking = false;
     private bool isThrowing = false;
+
 
     private void Start()
     {
@@ -41,7 +52,6 @@ public class EnemyPatrol : MonoBehaviour
         while (true)
         {
             // Invocar el evento de cambio de velocidad
-            OnSpeedChanged?.Invoke(Mathf.Clamp01(agent.velocity.magnitude / agent.speed));
             GetComponent<Animator>().SetFloat("vel", agent.speed);
             // Verificar si el agente ha alcanzado el destino
             if (HasReachedDestination())
@@ -65,23 +75,12 @@ public class EnemyPatrol : MonoBehaviour
         FaceTarget(destination.position);
         // Iniciar la animación de recoger
         GetComponent<Animator>().SetTrigger("pick");
-        OnPick?.Invoke();
         yield return new WaitForSeconds(pickduration);
 
-        // Incrementar el contador de cestas recogidas
-        basketCounter++;
         isPicking = false;
 
-        if (basketCounter > 2)
-        {
-            // Ir a la zona de lanzamiento si ha recogido más de 2 cestas
-            StartCoroutine(GoThrow());
-        }
-        else
-        {
-            // Continuar patrullando si no ha recogido suficientes cestas
-            StartCoroutine(Patrol());
-        }
+        // Ir a la zona de lanzamiento si ha recogido más de 2 cestas
+        StartCoroutine(GoThrow());
     }
 
     private IEnumerator GoThrow()
@@ -91,7 +90,6 @@ public class EnemyPatrol : MonoBehaviour
         while (true)
         {
             // Invocar el evento de cambio de velocidad
-            OnSpeedChanged?.Invoke(Mathf.Clamp01(agent.velocity.magnitude / agent.speed));
             GetComponent<Animator>().SetFloat("vel", agent.speed);
             // Verificar si el agente ha alcanzado el destino
             if (HasReachedDestination())
@@ -113,16 +111,41 @@ public class EnemyPatrol : MonoBehaviour
         isThrowing = true;
         // Mirar hacia el jugador
         FaceTarget(player.position);
-        // Iniciar la animación de lanzar
-        GetComponent<Animator>().SetTrigger("throwing");
-        OnThrow?.Invoke();
-        yield return new WaitForSeconds(throwduration);
-        isThrowing = false;
 
-        // Resetear el contador de cestas recogidas después de lanzar
-        basketCounter = 0;
+        // Empieza a lanzar objetos con su correspondiente animacion
+        StartCoroutine(ThrowObjectWithDelay());
+
         // Volver a patrullar
-        StartCoroutine(Patrol());
+        if (!isThrowing)
+            StartCoroutine(Patrol());
+        yield return null;
+    }
+
+    private IEnumerator ThrowObjectWithDelay() {
+        int randNumbObjects = Random.Range(minObjectsToThrow, maxObjectsToThrow + 1);
+
+        for (int i = 0; i < randNumbObjects; i++) {
+            // Select Random Object 
+            int randomIndex = Random.Range(0, objectList.Count);
+            GameObject randomObject = objectList[randomIndex];
+
+            //Debug.Log(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+
+            // Iniciar la animación de lanzar
+            GetComponent<Animator>().SetTrigger("throwing");
+
+            // Delay de la animacion antes de lanzar
+            yield return new WaitForSeconds(throwAnimDelay);
+
+            // Event Throw Object
+            if (OnThrownObject != null)
+                OnThrownObject(randomObject);
+
+            // Random Delay (FireRate)
+            float randomDelay = Random.Range(minTimeBetweenThrows, maxTimeBetweenThrows);
+            yield return new WaitForSeconds(randomDelay);
+        }
+        isThrowing = false;
     }
 
     private void SetAgentDestination(Vector3 targetPosition)
@@ -152,9 +175,16 @@ public class EnemyPatrol : MonoBehaviour
     private void FaceTarget(Vector3 target)
     {
         // Girar gradualmente hacia el objetivo
-        Vector3 direction = (target - transform.position).normalized;
+        /*Vector3 direction = (target - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+        */
+        // Obtener la dirección hacia el jugador
+        Vector3 directionToPlayer = target - transform.position;
+        // Calcular la rotación para mirar hacia el jugador
+        Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
+        // Aplicar la rotación al Canvas
+        transform.rotation = lookRotation;
     }
 
     private Transform GetRandomBasketPosition()

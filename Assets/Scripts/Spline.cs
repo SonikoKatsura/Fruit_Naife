@@ -35,10 +35,12 @@ public class Spline : MonoBehaviour {
     //SUSCRIPCIÓN al EVENTO
     void OnEnable() {
         RandomObjectSelector.OnThrownObject += LaunchObject;
+        EnemyPatrol.OnThrownObject += LaunchObject;
     }
     //DESUSCRIPCIÓN al EVENTO
     void OnDisable() {
         RandomObjectSelector.OnThrownObject -= LaunchObject;
+        EnemyPatrol.OnThrownObject -= LaunchObject;
     }
 
     private void Start() {
@@ -137,7 +139,7 @@ public class Spline : MonoBehaviour {
             yield return null;
         }
 
-        Destroy(objectToLaunch);
+        //Destroy(objectToLaunch);
     }
 
     private void OnDrawGizmos() {
