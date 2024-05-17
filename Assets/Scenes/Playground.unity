@@ -5203,6 +5203,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRCameraRigInteraction Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1907439664061720327, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907439664061720327, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907439664061720327, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907439664061720327, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5241,6 +5257,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2214077021268878404, guid: 21ab25c759eab804fabad703063444d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493011751090551827, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317126633602201295, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317126633602201295, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317126633602201295, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317126633602201295, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718215433156733864, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718215433156733864, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718215433156733864, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718215433156733864, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164474039426393652, guid: 21ab25c759eab804fabad703063444d3, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
