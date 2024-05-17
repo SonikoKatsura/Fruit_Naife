@@ -1,143 +1,167 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.AI.Navigation;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class EnemyPatrol: MonoBehaviour
+public class EnemyPatrol : MonoBehaviour
 {
+    // Variables para destino, área de lanzamiento y jugador
     [SerializeField] Transform destination, throwarea, player;
+    // Duración de las animaciones de lanzar y recoger
     [SerializeField] float throwduration, pickduration;
-   
-   [SerializeField]
-    private NavMeshAgent _Agent;
+    // Agente de navegación
+    [SerializeField] private NavMeshAgent agent;
+    // Array de cestas
+    [SerializeField] private GameObject[] baskets;
 
+    // Eventos para cambios de velocidad y acciones específicas
     public event Action<float> OnSpeedChanged;
-
-    private int basketcounter;
-
-    private bool _IsPicking = false;
-    private bool _IsThrowing = false;
-    private Mesh _NavMesh;
     public UnityEvent OnPick, OnThrow;
 
-    [SerializeField]
-    GameObject[] baskets ;
+    // Contador de cestas recogidas
+    private int basketCounter = 0;
+    // Banderas para controlar el estado del enemigo
+    private bool isPicking = false;
+    private bool isThrowing = false;
 
-    void Start()
+    private void Start()
     {
-        NavMeshTriangulation triangles = NavMesh.CalculateTriangulation();
-        Mesh mesh = new Mesh();
-        _NavMesh = mesh;
-        _NavMesh.vertices = triangles.vertices;
-        _NavMesh.triangles = triangles.indices;
-
-
+        // Encontrar todas las cestas con la etiqueta "Basket"
         baskets = GameObject.FindGameObjectsWithTag("Basket");
-
+        // Iniciar la corutina de patrullaje
         StartCoroutine(Patrol());
     }
 
-    void Update()
+    private IEnumerator Patrol()
     {
-
-    }
-
-
-
-    IEnumerator Patrol()
-    {
-        GetComponent<Animator>().SetFloat("vel", 2);
-        destination = GetRandomBasketPosition();
-        GetComponent<NavMeshAgent>().SetDestination(destination.position);
+        // Establecer el destino inicial a una cesta aleatoria
+        SetAgentDestination(GetRandomBasketPosition().position);
         while (true)
         {
-            OnSpeedChanged?.Invoke(Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
-
-            if (Vector3.Distance(transform.position, destination.position) < 0.5f)
+            // Invocar el evento de cambio de velocidad
+            OnSpeedChanged?.Invoke(Mathf.Clamp01(agent.velocity.magnitude / agent.speed));
+            GetComponent<Animator>().SetFloat("vel", agent.speed);
+            // Verificar si el agente ha alcanzado el destino
+            if (HasReachedDestination())
             {
-                _Agent.isStopped = true;
-                GetComponent<Animator>().SetFloat("velocity", 0);
-                StopCoroutine(Patrol());
+                // Detener al agente
+                agent.isStopped = true;
+                GetComponent<Animator>().SetFloat("vel", 0);
+                // Iniciar la corutina de recoger
                 StartCoroutine(PickUp());
-  
+                // Salir de la corutina de patrullaje
+                yield break;
             }
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
 
-    IEnumerator Throw()
+    private IEnumerator PickUp()
     {
-        _IsThrowing = true;
-        if (_IsThrowing)
+        isPicking = true;
+        // Mirar hacia la cesta
+        FaceTarget(destination.position);
+        // Iniciar la animación de recoger
+        GetComponent<Animator>().SetTrigger("pick");
+        OnPick?.Invoke();
+        yield return new WaitForSeconds(pickduration);
+
+        // Incrementar el contador de cestas recogidas
+        basketCounter++;
+        isPicking = false;
+
+        if (basketCounter > 2)
         {
-            GetComponent<Animator>().SetTrigger("throwing");
-            FaceTarget(player.position);
-
-
-            yield return new WaitForSeconds(throwduration);
+            // Ir a la zona de lanzamiento si ha recogido más de 2 cestas
+            StartCoroutine(GoThrow());
         }
-
-        yield return new WaitForEndOfFrame();
-    }
-
-    IEnumerator PickUp()
-    {
-        _IsPicking = true;
-        while (_IsPicking)
+        else
         {
-            GetComponent<Animator>().SetTrigger("pick");
-            yield return new WaitForSeconds(pickduration);
-            basketcounter++;
-            if (basketcounter > 2)
-            {
-                StopCoroutine(PickUp());
-                StartCoroutine(GoThrow());
-            }
-            else
-            {
-                StopCoroutine(PickUp());
-                StartCoroutine(Patrol());
-            }
+            // Continuar patrullando si no ha recogido suficientes cestas
+            StartCoroutine(Patrol());
         }
     }
-    IEnumerator GoThrow()
+
+    private IEnumerator GoThrow()
     {
-         Vector3 targetPosition = throwarea.position + Random.insideUnitSphere * 2f;
-         GetComponent<NavMeshAgent>().SetDestination(targetPosition);
-         while (true)
-         {
-            OnSpeedChanged?.Invoke(Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
-            if (Vector3.Distance(transform.position, destination.position) < 0.2f)
+        // Establecer el destino a la zona de lanzamiento
+        SetAgentDestination(throwarea.position);
+        while (true)
+        {
+            // Invocar el evento de cambio de velocidad
+            OnSpeedChanged?.Invoke(Mathf.Clamp01(agent.velocity.magnitude / agent.speed));
+            GetComponent<Animator>().SetFloat("vel", agent.speed);
+            // Verificar si el agente ha alcanzado el destino
+            if (HasReachedDestination())
             {
-                _Agent.isStopped = true;
-                GetComponent<Animator>().SetFloat("velocity", 0);
-                StopCoroutine(Patrol());
+                // Detener al agente
+                agent.isStopped = true;
+                GetComponent<Animator>().SetFloat("vel", 0);
+                // Iniciar la corutina de lanzar
                 StartCoroutine(Throw());
-
+                // Salir de la corutina de ir a la zona de lanzamiento
+                yield break;
             }
-
+            yield return null;
         }
-        yield return new WaitForEndOfFrame();
     }
 
-    void FaceTarget(Vector3 target)
+    private IEnumerator Throw()
     {
+        isThrowing = true;
+        // Mirar hacia el jugador
+        FaceTarget(player.position);
+        // Iniciar la animación de lanzar
+        GetComponent<Animator>().SetTrigger("throwing");
+        OnThrow?.Invoke();
+        yield return new WaitForSeconds(throwduration);
+        isThrowing = false;
+
+        // Resetear el contador de cestas recogidas después de lanzar
+        basketCounter = 0;
+        // Volver a patrullar
+        StartCoroutine(Patrol());
+    }
+
+    private void SetAgentDestination(Vector3 targetPosition)
+    {
+        // Reanudar el movimiento del agente
+        agent.isStopped = false;
+        // Establecer el destino del agente
+        agent.SetDestination(targetPosition);
+    }
+
+    private bool HasReachedDestination()
+    {
+        // Verificar si el agente ha alcanzado su destino
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void FaceTarget(Vector3 target)
+    {
+        // Girar gradualmente hacia el objetivo
         Vector3 direction = (target - transform.position).normalized;
-        Quaternion lookRotation
-            = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation
-            = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
     }
 
     private Transform GetRandomBasketPosition()
     {
+        // Obtener una posición aleatoria de una cesta
         int index = Random.Range(0, baskets.Length);
-        return baskets[index].transform;
+        destination = baskets[index].transform;
+        return destination;
     }
-
 }

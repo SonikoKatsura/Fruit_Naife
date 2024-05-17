@@ -8,6 +8,7 @@ TagManager:
   - Barrel
   - Sliceable
   - Naife
+  - Basket
   layers:
   - Default
   - TransparentFX
