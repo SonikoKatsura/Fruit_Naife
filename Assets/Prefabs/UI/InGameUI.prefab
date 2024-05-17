@@ -504,7 +504,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5435621593902177218}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 0.185, y: 0.185, z: 0.185}
   m_ConstrainProportionsScale: 1
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3904632075761671738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +595,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   pointsTxt: {fileID: 8698510186355104607}
-  livesTxt: {fileID: 0}
+  Heart_1: {fileID: 517618779829630946}
+  Heart_2: {fileID: 7320013145776022726}
+  Heart_3: {fileID: 6159473154369457183}
 --- !u!114 &3889144521393353693
 MonoBehaviour:
   m_ObjectHideFlags: 0
