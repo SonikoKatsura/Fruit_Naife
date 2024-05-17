@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyPatrol: MonoBehaviour
 {
-    [SerializeField] Vector3 destination, throwarea;
+    [SerializeField] Transform destination, throwarea, player;
     [SerializeField] float throwduration, pickduration;
    
    [SerializeField]
@@ -37,7 +37,7 @@ public class EnemyPatrol: MonoBehaviour
         _NavMesh.triangles = triangles.indices;
 
 
-        baskets = GameObject.FindGameObjectsWithTag("Baskets");
+        baskets = GameObject.FindGameObjectsWithTag("Basket");
 
         StartCoroutine(Patrol());
     }
@@ -51,13 +51,14 @@ public class EnemyPatrol: MonoBehaviour
 
     IEnumerator Patrol()
     {
+        GetComponent<Animator>().SetFloat("vel", 2);
         destination = GetRandomBasketPosition();
-        GetComponent<NavMeshAgent>().SetDestination(destination);
+        GetComponent<NavMeshAgent>().SetDestination(destination.position);
         while (true)
         {
             OnSpeedChanged?.Invoke(Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
 
-            if (Vector3.Distance(transform.position, destination) < 0.5f)
+            if (Vector3.Distance(transform.position, destination.position) < 0.5f)
             {
                 _Agent.isStopped = true;
                 GetComponent<Animator>().SetFloat("velocity", 0);
@@ -75,7 +76,7 @@ public class EnemyPatrol: MonoBehaviour
         if (_IsThrowing)
         {
             GetComponent<Animator>().SetTrigger("throwing");
-            FaceTarget(_Agent.currentOffMeshLinkData.endPos);
+            FaceTarget(player.position);
 
 
             yield return new WaitForSeconds(throwduration);
@@ -106,12 +107,12 @@ public class EnemyPatrol: MonoBehaviour
     }
     IEnumerator GoThrow()
     {
-         Vector3 targetPosition = throwarea + Random.insideUnitSphere * 2f;
+         Vector3 targetPosition = throwarea.position + Random.insideUnitSphere * 2f;
          GetComponent<NavMeshAgent>().SetDestination(targetPosition);
          while (true)
          {
             OnSpeedChanged?.Invoke(Mathf.Clamp01(_Agent.velocity.magnitude / _Agent.speed));
-            if (Vector3.Distance(transform.position, destination) < 0.2f)
+            if (Vector3.Distance(transform.position, destination.position) < 0.2f)
             {
                 _Agent.isStopped = true;
                 GetComponent<Animator>().SetFloat("velocity", 0);
@@ -133,10 +134,10 @@ public class EnemyPatrol: MonoBehaviour
             = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
     }
 
-    private Vector3 GetRandomBasketPosition()
+    private Transform GetRandomBasketPosition()
     {
         int index = Random.Range(0, baskets.Length);
-        return baskets[index].transform.position;
+        return baskets[index].transform;
     }
 
 }
