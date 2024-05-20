@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Dacon SDF
+  m_Name: Dacon SDF 1
   m_EditorClassIdentifier: 
-  hashCode: 736403638
+  hashCode: -1215323609
   material: {fileID: 4880697055916227159}
-  materialHashCode: -1927748650
+  materialHashCode: 1381060263
   m_Version: 1.1.0
   m_SourceFontFileGUID: 06a5781e779c98b4a92598956c3169aa
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 06a5781e779c98b4a92598956c3169aa, type: 3}
