@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UpDownPlayer : MonoBehaviour {
+    [SerializeField] float step;
+    [SerializeField] GameObject VRCamera;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void CameraUp() {
+        MoveCameraY(step);
+    }
+    public void CameraDown() {
+        MoveCameraY(-step);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void MoveCameraY(float stepY) {
+        if (VRCamera != null) {
+            Vector3 newPosition = VRCamera.transform.position;
+            newPosition.y += stepY;
+            VRCamera.transform.position = newPosition;
+        }
+        else {
+            Debug.Log("Missing Camera assigned to UpDownPlayer");
+        }
     }
 }
