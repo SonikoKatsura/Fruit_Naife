@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3526780586862089551}
   - component: {fileID: 4408148202768929616}
   m_Layer: 5
-  m_Name: Button
+  m_Name: RestartBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3526780586862089551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4321658082128353674}
+        m_TargetAssemblyTypeName: SCSelectorBtn, Assembly-CSharp
+        m_MethodName: ResetGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2268748141601992467
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,10 +198,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Try Again
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 42696d3414b5a1e40a486160e9949939, type: 2}
+  m_sharedMaterial: {fileID: 4880697055916227159, guid: 42696d3414b5a1e40a486160e9949939, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -219,7 +231,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -320,10 +332,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Results
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 42696d3414b5a1e40a486160e9949939, type: 2}
+  m_sharedMaterial: {fileID: 4880697055916227159, guid: 42696d3414b5a1e40a486160e9949939, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -353,7 +365,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -401,9 +413,7 @@ GameObject:
   - component: {fileID: 3362114902054926079}
   - component: {fileID: 7556247322657047646}
   - component: {fileID: 3131442474539340029}
-  - component: {fileID: 1519041309042061689}
-  - component: {fileID: 5070849444812093582}
-  - component: {fileID: 6243526533548499885}
+  - component: {fileID: 4321658082128353674}
   m_Layer: 5
   m_Name: GameOverCanvas
   m_TagString: Untagged
@@ -476,7 +486,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3131442474539340029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,7 +504,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1519041309042061689
+--- !u!114 &4321658082128353674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -503,43 +513,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4020475869268509260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e546d5d259f94c44e9fcca5fb8be9bd5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb20d28ca29950a4aa13a9e08ac7d27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  pointsTxt: {fileID: 0}
-  Heart_1: {fileID: 0}
-  Heart_2: {fileID: 0}
-  Heart_3: {fileID: 0}
---- !u!114 &5070849444812093582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020475869268509260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a41b18d7a8500b4449d3959fcec4bbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textTimer: {fileID: 0}
---- !u!114 &6243526533548499885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020475869268509260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae08c060dbba326469c455b2b8d55ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  textCrono: {fileID: 0}
-  colorChange: 5
-  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4104795652764239305
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +941,7 @@ GameObject:
   - component: {fileID: 8221523538672348055}
   - component: {fileID: 2223479804304853659}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ResultsBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,4 +1048,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8221523538672348055}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4321658082128353674}
+        m_TargetAssemblyTypeName: SCSelectorBtn, Assembly-CSharp
+        m_MethodName: LoadRanking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -23,13 +23,13 @@ public class SCSelectorBtn : MonoBehaviour {
         //AudioManager.instance.PlaySFX("start_level");
         //AudioManager.instance.PlayMusic("MusicLoop");
     }
-    public void Ranking() {
+    public void LoadRanking() {
         SCManager.instance.LoadScene("Ranking");
     }
-    public void Config() {
+    public void LoadConfig() {
         SCManager.instance.LoadScene("Settings");
     }
-    public void Credits() {
+    public void LoadCredits() {
         SCManager.instance.LoadScene("Credits");
     }
 
