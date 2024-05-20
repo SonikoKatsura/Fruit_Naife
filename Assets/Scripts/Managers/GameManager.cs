@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour {
         //AudioManager.instance.PlaySFX("Fruit");
     }
 
-    private void ResetLives() {
+    public void ResetLives() {
         currentLives = maxLives;
     }
     private void ResetPoints() {

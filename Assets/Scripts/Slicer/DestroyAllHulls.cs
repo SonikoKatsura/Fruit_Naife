@@ -14,6 +14,9 @@ public class DestroyAllHulls : MonoBehaviour {
 
         // Destruir todos los objetos llamados "Lower_Hull" en la escena
         DestroyObjectsWithName("Lower_Hull");
+
+        // Reinicia las vidas
+        ResetLives();
     }
 
     private void DestroyObjectsWithName(string objectName) {
@@ -74,4 +77,9 @@ public class DestroyAllHulls : MonoBehaviour {
         material.color = color;
     }
     #endregion
+
+    private void ResetLives() {
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
+        gameManager.ResetLives();
+    }
 }

@@ -7,7 +7,7 @@ public class LookAtPlayer : MonoBehaviour {
 
     private void Start() {
         if (target == null) {
-            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            target = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
             if (target == null)
                 Debug.Log("No hay Target / Player");
         }
