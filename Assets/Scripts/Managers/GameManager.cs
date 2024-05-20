@@ -78,11 +78,13 @@ public class GameManager : MonoBehaviour {
     private void AddPoints(int amountOfPoints) {
         if (_hasMultiplier) {
             currentPoints += amountOfPoints * _pointsMultiplier;
-        } else {
+        }
+        else {
             currentPoints += amountOfPoints;
         }
     }
 
+    #region Double Points
     private void StartDoublePoints(int multiplier, float duration) {
         if (!_hasMultiplier) {
             _hasMultiplier = true;
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(duration);
         _hasMultiplier = false;
     }
+    #endregion
 
     private void CheckIfLose() {
         if (currentLives <= 0) {
