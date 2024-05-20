@@ -139,7 +139,7 @@ public class Spline : MonoBehaviour {
             yield return null;
         }
 
-        //Destroy(objectToLaunch);
+        Destroy(objectToLaunch);
     }
 
     private void OnDrawGizmos() {

@@ -24,13 +24,14 @@ public class EnemyPatrol : MonoBehaviour {
 
     [Header("Throw")]
     [SerializeField] List<GameObject> objectList;
-    [SerializeField] float throwAnimDelay = 0.625f;
+    [SerializeField] float throwAnimSpeed = 1; 
+    //[SerializeField] float throwAnimDelay = 0.625f;
 
     [SerializeField] int minObjectsToThrow = 1;
     [SerializeField] int maxObjectsToThrow = 10;
 
-    [SerializeField] float minTimeBetweenThrows = 1f;
-    [SerializeField] float maxTimeBetweenThrows = 2f;
+    //[SerializeField] float minTimeBetweenThrows = 1f;
+    //[SerializeField] float maxTimeBetweenThrows = 2f;
 
     // Banderas para controlar el estado del enemigo
     private bool isPicking = false;
@@ -112,16 +113,54 @@ public class EnemyPatrol : MonoBehaviour {
         // Mirar hacia el jugador
         FaceTarget(player.position);
 
-        // Empieza a lanzar objetos con su correspondiente animacion
-        StartCoroutine(ThrowObjectWithDelay());
+        // Animación y nº de lanzamientos
+        yield return StartCoroutine(ThrowFor());
 
         // Volver a patrullar
         if (!isThrowing)
             StartCoroutine(Patrol());
+
         yield return null;
     }
 
-    private IEnumerator ThrowObjectWithDelay() {
+    private IEnumerator ThrowFor() {
+        int randNumbObjects = Random.Range(minObjectsToThrow, maxObjectsToThrow + 1);
+        Animator anim = GetComponent<Animator>();
+
+        anim.speed = throwAnimSpeed;
+
+        for (int i = 0; i < randNumbObjects; i++) {
+            if (isThrowing)
+            // Iniciar la animación de lanzar
+            anim.SetTrigger("throwing");
+
+            // Esperar a que la animación de lanzamiento comience
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Throw"));
+
+            // Esperar a que la animación termine
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length / throwAnimSpeed);
+        }
+
+        isThrowing = false;
+    }
+
+    // Se llama desde la animacion
+    public void ThrowObject() {
+        Debug.Log("throw");
+        if (isThrowing) {
+            Debug.Log("isThrowing");
+            // Select Random Object 
+            int randomIndex = Random.Range(0, objectList.Count);
+            GameObject randomObject = objectList[randomIndex];
+
+            // Event Throw Object
+            if (OnThrownObject != null)
+                OnThrownObject(randomObject);
+        }
+    }
+ 
+
+    /*private IEnumerator ThrowObjectWithDelay() {
         int randNumbObjects = Random.Range(minObjectsToThrow, maxObjectsToThrow + 1);
 
         for (int i = 0; i < randNumbObjects; i++) {
@@ -132,21 +171,21 @@ public class EnemyPatrol : MonoBehaviour {
             //Debug.Log(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
             // Iniciar la animación de lanzar
-            GetComponent<Animator>().SetTrigger("throwing");
+            //GetComponent<Animator>().SetTrigger("throwing");
 
             // Delay de la animacion antes de lanzar
-            yield return new WaitForSeconds(throwAnimDelay);
+            //yield return new WaitForSeconds(throwAnimDelay);
 
             // Event Throw Object
-            if (OnThrownObject != null)
-                OnThrownObject(randomObject);
+            //if (OnThrownObject != null)
+            //    OnThrownObject(randomObject);
 
             // Random Delay (FireRate)
-            float randomDelay = Random.Range(minTimeBetweenThrows, maxTimeBetweenThrows);
+            //float randomDelay = Random.Range(minTimeBetweenThrows, maxTimeBetweenThrows);
             yield return new WaitForSeconds(randomDelay);
         }
         isThrowing = false;
-    }
+    }*/
 
     private void SetAgentDestination(Vector3 targetPosition)
     {
