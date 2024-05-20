@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    //EVENTO (DELEGADO)   --> Lose Game
+    public delegate void LoseGame();
+    public static event LoseGame OnLoseGame;    //(EVENTO)
+
     [SerializeField] int maxLives = 3;
     [SerializeField] int currentLives;
     [SerializeField] int currentPoints = 0;
-
-    [SerializeField] ParticleSystem explosionParticles;
-
-    [SerializeField] string nextScene = "RankingScene";
 
     [Header("Timer")]
     [SerializeField] Timer timer;
@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour {
     [Header("Crono")]
     [SerializeField] Crono crono;
     private Coroutine _cronoCoroutine;
+
+    [Header("Game Over")]
+    [SerializeField] bool isPlayground = false;
+    [SerializeField] string nextScene = "RankingScene";
+    [SerializeField] Canvas GameOverCanvas;
 
     private bool _hasMultiplier = false;
     private int _pointsMultiplier = 1;
@@ -39,6 +44,8 @@ public class GameManager : MonoBehaviour {
     void Start() {
         ResetLives();
         ResetPoints();
+        // Deactivate GameOverCanvas
+        GameOverCanvas.gameObject.SetActive(false);
 
         if (timer == null) {
             timer = FindObjectOfType<Timer>();
@@ -56,7 +63,8 @@ public class GameManager : MonoBehaviour {
         //AudioManager.instance.PlaySFX("Explosion");
 
         // Check if Lose (wait some seconds and load Ranking Scene)
-        CheckIfLose();
+        if (!isPlayground)
+            CheckIfLose();
     }
     private void OnHitFruit(int amountOfPoints) {
         // Increase points
@@ -109,8 +117,15 @@ public class GameManager : MonoBehaviour {
             timerTime = timer.GetFloatTimer();
             timer.StopTimer();
 
+            // Event hit TNT Barrel
+            if (OnLoseGame != null)
+                OnLoseGame();
+
+            // Show GameOverCanvas
+            GameOverCanvas.gameObject.SetActive(true);
+
             // Load next scene waiting some seconds
-            SCManager.instance.LoadSceneWaiting(nextScene);
+            //SCManager.instance.LoadSceneWaiting(nextScene);
         }
     }
 

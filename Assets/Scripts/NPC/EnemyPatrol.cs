@@ -37,6 +37,14 @@ public class EnemyPatrol : MonoBehaviour {
     private bool isPicking = false;
     private bool isThrowing = false;
 
+    //SUSCRIPCIÓN al EVENTO
+    void OnEnable() {
+        GameManager.OnLoseGame += GoIdle;
+    }
+    //DESUSCRIPCIÓN al EVENTO
+    void OnDisable() {
+        GameManager.OnLoseGame -= GoIdle;
+    }
 
     private void Start()
     {
@@ -233,4 +241,19 @@ public class EnemyPatrol : MonoBehaviour {
         destination = baskets[index].transform;
         return destination;
     }
+
+
+    #region Game Over State
+    private void GoIdle() {
+        StartCoroutine(Idle());
+    }
+    private IEnumerator Idle() {
+        StopAllCoroutines();
+
+        // Iniciar la animación Idle
+        GetComponent<Animator>().SetTrigger("idle");
+
+        yield return null;
+    }
+    #endregion
 }
