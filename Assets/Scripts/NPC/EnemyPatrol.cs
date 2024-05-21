@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using static Naife;
-using static RandomObjectSelector;
 using Random = UnityEngine.Random;
 
 public class EnemyPatrol : MonoBehaviour {
     //EVENTO (DELEGADO)   --> Throw Object
     public delegate void ThrownObject(GameObject obj);
     public static event ThrownObject OnThrownObject;    //(EVENTO)
+
+    //EVENTO (DELEGADO)   --> Objetos lanzados
+    public delegate void ObjectsThrowed();
+    public static event ObjectsThrowed OnObjectsThrowed;    //(EVENTO)
 
     // Variables para destino, área de lanzamiento y jugador
     [SerializeField] Transform destination, throwarea, player;
@@ -123,6 +125,10 @@ public class EnemyPatrol : MonoBehaviour {
 
         // Animación y nº de lanzamientos
         yield return StartCoroutine(ThrowFor());
+
+        // Evento que avisa al GameManager que ha terminado de lanzar (para la logica de aumentar la velocidad)
+        if (OnObjectsThrowed != null)
+            OnObjectsThrowed();
 
         // Volver a patrullar
         if (!isThrowing)
@@ -254,6 +260,15 @@ public class EnemyPatrol : MonoBehaviour {
         GetComponent<Animator>().SetTrigger("idle");
 
         yield return null;
+    }
+    #endregion
+
+    #region Update Enemy Throw config values
+    public void SetMinThrow(int minThrow) {
+        minObjectsToThrow = minThrow;
+    }
+    public void SetMaxThrow(int maxThrow) {
+        maxObjectsToThrow = maxThrow;
     }
     #endregion
 }
