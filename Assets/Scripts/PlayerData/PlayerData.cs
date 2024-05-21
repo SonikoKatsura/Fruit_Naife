@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class PlayerData {
 
     public string name;
-    public float time;
+    public string time;
     public int score;
 
-    public PlayerData(string name, float time, int score)
+    public PlayerData(string name, string time, int score)
     {
         this.name = name;
         this.time = time;

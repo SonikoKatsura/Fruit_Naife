@@ -8,10 +8,12 @@ using UnityEngine;
 public class JSONWriter : MonoBehaviour {
     [SerializeField] TMP_InputField playerName;
     [SerializeField] TMP_Text playerTime;
+    [SerializeField] TMP_Text playerScore;
     string dataFilePath = "ranking.json";
 
     void Start() {
-        playerTime.text = $"{PlayerPrefs.GetInt("score", 0)} secs.";
+        playerTime.text = DataManager.instance.timeText;
+        playerScore.text = DataManager.instance.score.ToString();
     }
 
     public void SaveData() {
@@ -19,7 +21,7 @@ public class JSONWriter : MonoBehaviour {
 
         if (playerDataList == null) playerDataList = new PlayerDataList();
         if (playerName.text == "") playerName.text = "Anonymous";
-        //playerDataList.playerData.Add(new PlayerData(playerName.text, PlayerPrefs.GetInt("score", 0)));
+        playerDataList.playerData.Add(new PlayerData(playerName.text, DataManager.instance.timeText , DataManager.instance.score));
 
         string jsonData = JsonUtility.ToJson(playerDataList, true);
         PlayerPrefs.SetString("PlayerList", jsonData);
