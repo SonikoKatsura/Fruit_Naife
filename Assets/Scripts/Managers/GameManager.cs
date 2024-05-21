@@ -1,6 +1,7 @@
 using Oculus.Platform;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
     [Header("Timer")]
     [SerializeField] Timer timer;
     [SerializeField] float timerTime = 0f;
+    [SerializeField] string timerTimeTxt;
 
     [Header("Crono")]
     [SerializeField] Crono crono;
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] bool isPlayground = false;
     [SerializeField] string nextScene = "RankingScene";
     [SerializeField] Canvas GameOverCanvas;
+    [SerializeField] TextMeshProUGUI pointsTxt;
+    [SerializeField] TextMeshProUGUI timeTxt;
 
     [Header("Edit Enemy")]
     [SerializeField] EnemyPatrol enemyPatrol;
@@ -34,6 +38,8 @@ public class GameManager : MonoBehaviour {
 
     private int _minObjectsToThrow;
     private int _maxObjectsToThrow;
+    private int _minAnimSpeed;
+    private int _maxAnimSpeed;
     private float _agentSpeed = 20;
     private float _agentAcceleration = 15;
 
@@ -136,6 +142,7 @@ public class GameManager : MonoBehaviour {
     private void CheckIfLose() {
         if (currentLives <= 0) {
             timerTime = timer.GetFloatTimer();
+            timerTimeTxt = timer.GetTransformTextTimer();
             timer.StopTimer();
 
             // Event hit TNT Barrel
@@ -144,6 +151,12 @@ public class GameManager : MonoBehaviour {
 
             // Show GameOverCanvas
             GameOverCanvas.gameObject.SetActive(true);
+            if (pointsTxt) pointsTxt.text = currentPoints.ToString();
+            if (timeTxt) timeTxt.text = timerTimeTxt;
+
+            DataManager.instance.SetScore(currentPoints);
+            DataManager.instance.SetTime(timerTime);
+            DataManager.instance.SetTimeTxt(timerTimeTxt);
 
             // Load next scene waiting some seconds
             //SCManager.instance.LoadSceneWaiting(nextScene);

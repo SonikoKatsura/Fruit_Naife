@@ -19,7 +19,7 @@ public class JSONWriter : MonoBehaviour {
 
         if (playerDataList == null) playerDataList = new PlayerDataList();
         if (playerName.text == "") playerName.text = "Anonymous";
-        playerDataList.playerData.Add(new PlayerData(playerName.text, PlayerPrefs.GetInt("score", 0)));
+        //playerDataList.playerData.Add(new PlayerData(playerName.text, PlayerPrefs.GetInt("score", 0)));
 
         string jsonData = JsonUtility.ToJson(playerDataList, true);
         PlayerPrefs.SetString("PlayerList", jsonData);

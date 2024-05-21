@@ -26,11 +26,12 @@ public class EnemyPatrol : MonoBehaviour {
 
     [Header("Throw")]
     [SerializeField] List<GameObject> objectList;
-    [SerializeField] float throwAnimSpeed = 1; 
+    private float _minThrowAnimSpeed = 1;
+    private float _maxThrowAnimSpeed = 3;
     //[SerializeField] float throwAnimDelay = 0.625f;
 
-    [SerializeField] int minObjectsToThrow = 1;
-    [SerializeField] int maxObjectsToThrow = 10;
+    private int _minObjectsToThrow = 1;
+    private int _maxObjectsToThrow = 10;
 
     //[SerializeField] float minTimeBetweenThrows = 1f;
     //[SerializeField] float maxTimeBetweenThrows = 2f;
@@ -138,21 +139,25 @@ public class EnemyPatrol : MonoBehaviour {
     }
 
     private IEnumerator ThrowFor() {
-        int randNumbObjects = Random.Range(minObjectsToThrow, maxObjectsToThrow + 1);
+        int randNumbObjects = Random.Range(_minObjectsToThrow, _maxObjectsToThrow + 1);
+
         Animator anim = GetComponent<Animator>();
 
-        anim.speed = throwAnimSpeed;
-
         for (int i = 0; i < randNumbObjects; i++) {
-            if (isThrowing)
-            // Iniciar la animación de lanzar
-            anim.SetTrigger("throwing");
+            if (isThrowing) {
+                // Random Anim Speed
+                float randAnimSpeed = Random.Range(_minThrowAnimSpeed, _maxThrowAnimSpeed + 1);
+                anim.speed = randAnimSpeed;
 
-            // Esperar a que la animación de lanzamiento comience
-            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Throw"));
+                // Iniciar la animación de lanzar
+                anim.SetTrigger("throwing");
 
-            // Esperar a que la animación termine
-            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length / throwAnimSpeed);
+                // Esperar a que la animación de lanzamiento comience
+                yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Throw"));
+
+                // Esperar a que la animación termine
+                yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length / randAnimSpeed);
+            }
         }
 
         isThrowing = false;
@@ -265,10 +270,10 @@ public class EnemyPatrol : MonoBehaviour {
 
     #region Update Enemy Throw config values
     public void SetMinThrow(int minThrow) {
-        minObjectsToThrow = minThrow;
+        _minObjectsToThrow = minThrow;
     }
     public void SetMaxThrow(int maxThrow) {
-        maxObjectsToThrow = maxThrow;
+        _maxObjectsToThrow = maxThrow;
     }
     #endregion
 }
