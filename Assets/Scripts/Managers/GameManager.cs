@@ -2,6 +2,7 @@ using Oculus.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour {
     //EVENTO (DELEGADO)   --> Lose Game
@@ -25,6 +26,18 @@ public class GameManager : MonoBehaviour {
     [SerializeField] string nextScene = "RankingScene";
     [SerializeField] Canvas GameOverCanvas;
 
+    [Header("Edit Enemy")]
+    [SerializeField] EnemyPatrol enemyPatrol;
+    [SerializeField] int stepToIncrease = 2;
+    [SerializeField] int valueToIncrease = 2;
+    private int _currentSteps = 0;
+
+    private int _minObjectsToThrow;
+    private int _maxObjectsToThrow;
+    private float _agentSpeed = 20;
+    private float _agentAcceleration = 15;
+
+
     private bool _hasMultiplier = false;
     private int _pointsMultiplier = 1;
 
@@ -33,12 +46,14 @@ public class GameManager : MonoBehaviour {
         Naife.OnHitBarrel += OnHitBarrel;
         Naife.OnHitFruit += OnHitFruit;
         DoublePoints.OnDoublePoints += StartDoublePoints;
+        EnemyPatrol.OnObjectsThrowed += IncreaseThrowValues;
     }
     //DESUSCRIPCIÓN al EVENTO
     void OnDisable() {
         Naife.OnHitBarrel -= OnHitBarrel;
         Naife.OnHitFruit -= OnHitFruit;
         DoublePoints.OnDoublePoints -= StartDoublePoints;
+        EnemyPatrol.OnObjectsThrowed -= IncreaseThrowValues;
     }
 
     void Start() {
@@ -53,6 +68,12 @@ public class GameManager : MonoBehaviour {
                 Debug.Log("Missing Timer");
         }
         StartTimer();
+
+        if (enemyPatrol == null) {
+            enemyPatrol = GameObject.FindAnyObjectByType<EnemyPatrol>();
+            if (enemyPatrol == null)
+                Debug.Log("No hay EnemyPatrol");
+        }
     }
 
     private void OnHitBarrel(Vector3 position) {
@@ -147,6 +168,33 @@ public class GameManager : MonoBehaviour {
     }
     public int GetLives() {
         return currentLives;
+    }
+    #endregion
+
+
+    #region Update Enemy Throw config values
+    private void IncreaseThrowValues() {
+        Debug.Log(_currentSteps);
+        if (_currentSteps >= stepToIncrease) {
+            _minObjectsToThrow += valueToIncrease;
+            _maxObjectsToThrow += valueToIncrease;
+            _agentSpeed += valueToIncrease;
+            _agentAcceleration += valueToIncrease;
+
+            //Debug.Log("Increase Throw & Agent Speed " + _minObjectsToThrow + ", " + _maxObjectsToThrow + ", " + _agentSpeed + ", " + _agentAcceleration);
+
+            UpdateConfigValues(_minObjectsToThrow, _maxObjectsToThrow, _agentSpeed, _agentAcceleration);
+            _currentSteps = 0;
+        }
+        _currentSteps++;
+    }
+    private void UpdateConfigValues(int minThrow, int maxThrow, float speed, float acceleration) {
+        enemyPatrol.SetMinThrow(minThrow);
+        enemyPatrol.SetMaxThrow(maxThrow);
+
+        NavMeshAgent agent = enemyPatrol.GetComponent<NavMeshAgent>();
+        agent.speed = speed;
+        agent.acceleration = acceleration;
     }
     #endregion
 }
