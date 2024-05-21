@@ -6,24 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NewScore.unity
-    guid: db1695ac8ab354342aca691aae741f52
-  - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 7d37a3391c54f4e4b91759b6ea45999a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/map.unity
     guid: 0aa4c990bf528594d90f1ffd4c7682a4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Playground.unity
     guid: b72ffa7b7501f934d9fe36981a1478f1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 8b8a1ec4b9d947d4d8b0079890e23ccb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: 3c51617e26a5ea64ca24f6a2cd3c1819
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/NewScore.unity
+    guid: db1695ac8ab354342aca691aae741f52
+  - enabled: 1
     path: Assets/Scenes/Score Board.unity
     guid: 7bfdc60101bcafb4f8413bcfcb945f2f
   m_configObjects:

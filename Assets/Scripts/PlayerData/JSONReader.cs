@@ -38,12 +38,12 @@ public class JSONReader : MonoBehaviour {
     }
 
     public void SetData(PlayerDataList playerDataList) {
-        playerDataList.playerData.Sort((x, y) => x.time.CompareTo(y.time));
+        playerDataList.playerData.Sort((x, y) => x.score.CompareTo(y.score));
 
         for(int i = 0; i < 3 && i < playerDataList.playerData.Count; i++) {
             playerNames[i].text = playerDataList.playerData[i].name;
-            playerTimes[i].text = $"{playerDataList.playerData[i].time} secs.";
-            playerScores[i].text = $"{playerDataList.playerData[i].score}";
+            playerTimes[i].text = playerDataList.playerData[i].time;
+            playerScores[i].text = playerDataList.playerData[i].score.ToString();
         }
     }
 }
