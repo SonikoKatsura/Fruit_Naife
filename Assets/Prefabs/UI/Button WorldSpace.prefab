@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df454a2c5bf9964186f5c38085f5e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 1
+  step: 0.1
   VRCamera: {fileID: 0}
 --- !u!114 &3147227935964057536
 MonoBehaviour:

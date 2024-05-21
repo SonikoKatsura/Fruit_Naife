@@ -15070,7 +15070,7 @@ MonoBehaviour:
   defaultCrossSectionMaterial: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
   defaultCrossSectionParticles: {fileID: 8243060837207991589, guid: 9039058861feb1d4fa90a606e0a79c51, type: 3}
   cutForce: 100
-  destroyAfterDelay: 0
+  destroyAfterDelay: 1
   startFadeOut: 3
   fadeOutDuration: 2
 --- !u!54 &6738155094300205678
@@ -30178,7 +30178,7 @@ MonoBehaviour:
   defaultCrossSectionMaterial: {fileID: 2100000, guid: 5828e09c688a27d40b192fc0b25d5cd3, type: 2}
   defaultCrossSectionParticles: {fileID: 8243060837207991589, guid: 9039058861feb1d4fa90a606e0a79c51, type: 3}
   cutForce: 100
-  destroyAfterDelay: 0
+  destroyAfterDelay: 1
   startFadeOut: 3
   fadeOutDuration: 2
 --- !u!54 &6416101171516662832

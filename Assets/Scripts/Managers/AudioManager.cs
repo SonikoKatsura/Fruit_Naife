@@ -53,6 +53,7 @@ public class AudioManager : MonoBehaviour {
         // Los recursos (ASSETS) que se cargan en TIEMPO DE EJECUCIÓN DEBEN ESTAR DENTRO de una carpeta denominada /Assets/Resources/SFX
         sfxClips["Explosion"] = Resources.Load<AudioClip>("SFX/Explosion");
         sfxClips["Cut"] = Resources.Load<AudioClip>("SFX/Cut");
+        sfxClips["Throw"] = Resources.Load<AudioClip>("SFX/Throw");
         sfxClips["BtnSelect"] = Resources.Load<AudioClip>("SFX/BtnSelect");
     }
 

@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour {
     public static event LoseGame OnLoseGame;    //(EVENTO)
 
     [SerializeField] int maxLives = 3;
-    [SerializeField] int currentLives;
-    [SerializeField] int currentPoints = 0;
+    private int _currentLives;
+    private int _currentPoints = 0;
 
     [Header("Timer")]
     [SerializeField] Timer timer;
-    [SerializeField] float timerTime = 0f;
-    [SerializeField] string timerTimeTxt;
+    private float _timerTime = 0f;
+    private string _timerTimeTxt;
 
     [Header("Crono")]
     [SerializeField] Crono crono;
@@ -34,14 +34,16 @@ public class GameManager : MonoBehaviour {
     [SerializeField] EnemyPatrol enemyPatrol;
     [SerializeField] int stepToIncrease = 2;
     [SerializeField] int valueToIncrease = 2;
+    [SerializeField, Range(0.01f, 0.2f)]
+    float valueToIncreaseAnim = 0.1f;
     private int _currentSteps = 0;
 
-    private int _minObjectsToThrow;
-    private int _maxObjectsToThrow;
-    private int _minAnimSpeed;
-    private int _maxAnimSpeed;
-    private float _agentSpeed = 20;
-    private float _agentAcceleration = 15;
+    [SerializeField] int minObjectsToThrow = 3;
+    [SerializeField] int maxObjectsToThrow = 6;
+    [SerializeField] float minAnimSpeed = 1;
+    [SerializeField] float maxAnimSpeed = 1.2f;
+    [SerializeField] float agentSpeed = 20;
+    [SerializeField] float agentAcceleration = 15;
 
 
     private bool _hasMultiplier = false;
@@ -80,6 +82,9 @@ public class GameManager : MonoBehaviour {
             if (enemyPatrol == null)
                 Debug.Log("No hay EnemyPatrol");
         }
+
+        // Set initial enemy values
+        UpdateConfigValues(minObjectsToThrow, maxObjectsToThrow, minAnimSpeed, maxAnimSpeed, agentSpeed, agentAcceleration);
     }
 
     private void OnHitBarrel(Vector3 position) {
@@ -102,20 +107,20 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResetLives() {
-        currentLives = maxLives;
+        _currentLives = maxLives;
     }
     private void ResetPoints() {
-        currentPoints = 0;
+        _currentPoints = 0;
     }
     private void DecreaseLive() {
-        currentLives--;
+        _currentLives--;
     }
     private void AddPoints(int amountOfPoints) {
         if (_hasMultiplier) {
-            currentPoints += amountOfPoints * _pointsMultiplier;
+            _currentPoints += amountOfPoints * _pointsMultiplier;
         }
         else {
-            currentPoints += amountOfPoints;
+            _currentPoints += amountOfPoints;
         }
     }
 
@@ -140,9 +145,9 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     private void CheckIfLose() {
-        if (currentLives <= 0) {
-            timerTime = timer.GetFloatTimer();
-            timerTimeTxt = timer.GetTransformTextTimer();
+        if (_currentLives <= 0) {
+            _timerTime = GetLastCronoTimeFloat();
+            _timerTimeTxt = GetLastCronoTimeText();
             timer.StopTimer();
 
             // Event hit TNT Barrel
@@ -151,12 +156,13 @@ public class GameManager : MonoBehaviour {
 
             // Show GameOverCanvas
             GameOverCanvas.gameObject.SetActive(true);
-            if (pointsTxt) pointsTxt.text = currentPoints.ToString();
-            if (timeTxt) timeTxt.text = timerTimeTxt;
-
-            DataManager.instance.SetScore(currentPoints);
-            DataManager.instance.SetTime(timerTime);
-            DataManager.instance.SetTimeTxt(timerTimeTxt);
+            if (pointsTxt) pointsTxt.text = _currentPoints.ToString();
+            if (timeTxt) timeTxt.text = _timerTimeTxt;
+            
+            // Save Points and Time
+            DataManager.instance.SetScore(_currentPoints);
+            DataManager.instance.SetTime(_timerTime);
+            DataManager.instance.SetTimeTxt(_timerTimeTxt);
 
             // Load next scene waiting some seconds
             //SCManager.instance.LoadSceneWaiting(nextScene);
@@ -168,7 +174,7 @@ public class GameManager : MonoBehaviour {
         timer.StartTimer();
     }
     public float GetLastCronoTimeFloat() {
-        return timerTime;
+        return timer.GetFloatTimer();
     }
     public string GetLastCronoTimeText() {
         return timer.GetTransformTextTimer();
@@ -177,34 +183,48 @@ public class GameManager : MonoBehaviour {
 
     #region UI Points & Lives
     public int GetPoints() {
-        return currentPoints;
+        return _currentPoints;
     }
     public int GetLives() {
-        return currentLives;
+        return _currentLives;
     }
     #endregion
 
 
     #region Update Enemy Throw config values
     private void IncreaseThrowValues() {
-        Debug.Log(_currentSteps);
         if (_currentSteps >= stepToIncrease) {
-            _minObjectsToThrow += valueToIncrease;
-            _maxObjectsToThrow += valueToIncrease;
-            _agentSpeed += valueToIncrease;
-            _agentAcceleration += valueToIncrease;
+            // Num Objects
+            minObjectsToThrow += valueToIncrease;
+            maxObjectsToThrow += valueToIncrease;
 
-            //Debug.Log("Increase Throw & Agent Speed " + _minObjectsToThrow + ", " + _maxObjectsToThrow + ", " + _agentSpeed + ", " + _agentAcceleration);
+            // Anim Speed
+            if (minAnimSpeed < 2) minAnimSpeed += valueToIncreaseAnim;
+            if (maxAnimSpeed < 2) maxAnimSpeed += valueToIncreaseAnim;
+            if (maxAnimSpeed > 2) maxAnimSpeed = 2;
+            if (minAnimSpeed > 2) minAnimSpeed = 2;
 
-            UpdateConfigValues(_minObjectsToThrow, _maxObjectsToThrow, _agentSpeed, _agentAcceleration);
+            // Agent config
+            agentSpeed += valueToIncrease;
+            agentAcceleration += valueToIncrease;
+
+            Debug.Log("Increase Throw & Agent Speed " + minObjectsToThrow + ", " + maxObjectsToThrow + ", "+ minAnimSpeed + ", " + maxAnimSpeed + ", " + agentSpeed + ", " + agentAcceleration);
+
+            UpdateConfigValues(minObjectsToThrow, maxObjectsToThrow, minAnimSpeed, maxAnimSpeed, agentSpeed, agentAcceleration);
             _currentSteps = 0;
         }
         _currentSteps++;
     }
-    private void UpdateConfigValues(int minThrow, int maxThrow, float speed, float acceleration) {
+    private void UpdateConfigValues(int minThrow, int maxThrow, float minAnimSpeed, float maxAnimSpeed, float speed, float acceleration) {
+        // Num Objects
         enemyPatrol.SetMinThrow(minThrow);
         enemyPatrol.SetMaxThrow(maxThrow);
 
+        // Anim Speed
+        enemyPatrol.SetMinAnimSpeed(minAnimSpeed);
+        enemyPatrol.SetMaxAnimSpeed(maxAnimSpeed);
+
+        // Agent config
         NavMeshAgent agent = enemyPatrol.GetComponent<NavMeshAgent>();
         agent.speed = speed;
         agent.acceleration = acceleration;
