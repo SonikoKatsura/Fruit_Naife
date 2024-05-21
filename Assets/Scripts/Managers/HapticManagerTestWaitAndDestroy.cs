@@ -1,6 +1,4 @@
 using Oculus.Haptics;
-using Oculus.Interaction.Editor;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -65,37 +63,4 @@ public class HapticManagerTestWaitAndDestroy : MonoBehaviour {
     public void StopHaptics() {
         player.Stop();
     }
-
-    #region Create new AudioSource, Play Sound, Wait and Destroy
-    /*private void PlayHapticClipAndDestroy(Dictionary<string, HapticClip> dictionaryClips, string clipName, bool rightHand) {
-        //Debug.Log(clipName + ", " + loop);
-
-        // Obtiene el nuevo HapticClip
-        //HapticClip clip = dictionaryClips[clipName];*/
-    public void PlayHapticClipAndDestroy(/*Dictionary<string, HapticClip> dictionaryClips, string clipName,*/ bool rightHand) {
-        // Crear un nuevo HapticClipPlayer
-        HapticClipPlayer hapticPlayer = new HapticClipPlayer(clip);
-
-        // Reproducir la vibración
-        if (rightHand)
-            hapticPlayer.Play(Controller.Right);
-        else
-            hapticPlayer.Play(Controller.Left);
-
-        //Corrutina que espere el tiempo del clip y lo borre
-        float timeClip = hapticPlayer.clipDuration;
-
-        Debug.Log("Play");
-        // Autodestruir el HapticClipPlayer después de que termine de reproducir el Clip
-        StartCoroutine(WaitAndDisposeHapticClipPlayer(hapticPlayer, timeClip));
-    }
-
-    private IEnumerator WaitAndDisposeHapticClipPlayer(HapticClipPlayer hapticPlayer, float timeClip) {
-        Debug.Log("Start");
-        yield return new WaitForSeconds(timeClip);
-        Debug.Log("End");
-        hapticPlayer.Stop();
-        hapticPlayer.Dispose();
-    }
-    #endregion
  }
