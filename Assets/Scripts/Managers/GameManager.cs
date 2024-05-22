@@ -161,7 +161,10 @@ public class GameManager : MonoBehaviour {
             GameOverCanvas.gameObject.SetActive(true);
             if (pointsTxt) pointsTxt.text = _currentPoints.ToString();
             if (timeTxt) timeTxt.text = _timerTimeTxt;
-            
+
+            // Pause
+            PauseGame();
+
             // Save Points and Time
             DataManager.instance.SetScore(_currentPoints);
             DataManager.instance.SetTime(_timerTime);
@@ -231,6 +234,16 @@ public class GameManager : MonoBehaviour {
         NavMeshAgent agent = enemyPatrol.GetComponent<NavMeshAgent>();
         agent.speed = speed;
         agent.acceleration = acceleration;
+    }
+    #endregion
+
+    #region Play / Pause
+    void PauseGame() {
+        Time.timeScale = 0;
+    }
+
+    void ResumeGame() {
+        Time.timeScale = 1;
     }
     #endregion
 }

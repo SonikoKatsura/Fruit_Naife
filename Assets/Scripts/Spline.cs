@@ -29,8 +29,11 @@ public class Spline : MonoBehaviour {
     [SerializeField]
     private float launchRadius = 2f;
 
-    [SerializeField, Range(-0.25f, 0.25f)]
-    float zOffset = -0.1f;
+    [Header("Forward Offset")]
+    [SerializeField] bool xOffset = false;
+    [SerializeField] bool zOffset = true;
+    [SerializeField, Range(-0.5f, 0.5f)]
+    float xzOffset = -0.1f;
 
     [SerializeField]
     private float launchSpeed = 5f;
@@ -63,7 +66,8 @@ public class Spline : MonoBehaviour {
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
         // Static y, z position
         targetPosition.y = player.position.y;
-        targetPosition.z = player.position.z + zOffset;
+        if (xOffset) targetPosition.x = player.position.x + xzOffset;   // Variante para la escena de juego que está rotada
+        if (zOffset) targetPosition.z = player.position.z + xzOffset;
         CalculateMidPoint(startPoint, targetPosition);
         
         #endregion
@@ -104,7 +108,8 @@ public class Spline : MonoBehaviour {
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
         // Static y, z position
         targetPosition.y = player.position.y;
-        targetPosition.z = player.position.z + zOffset;
+        if (xOffset) targetPosition.x = player.position.x + xzOffset;   // Variante para la escena de juego que está rotada
+        if (zOffset) targetPosition.z = player.position.z + xzOffset;
 
         // Calcula el punto medio para este lanzamiento específico
         Vector3 midPointPosition = Vector3.Lerp(startPoint, targetPosition, _placementOffset);
