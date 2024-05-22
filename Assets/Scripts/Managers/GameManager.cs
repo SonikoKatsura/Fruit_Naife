@@ -33,16 +33,21 @@ public class GameManager : MonoBehaviour {
     [Header("Edit Enemy")]
     [SerializeField] EnemyPatrol enemyPatrol;
     [SerializeField] int stepToIncrease = 2;
-    [SerializeField] int valueToIncrease = 2;
-    [SerializeField, Range(0.01f, 0.2f)]
-    float valueToIncreaseAnim = 0.1f;
     private int _currentSteps = 0;
 
+    [Header("Objects Throw")]
+    [SerializeField] int valueToIncreaseObjects = 2;
     [SerializeField] int minObjectsToThrow = 3;
     [SerializeField] int maxObjectsToThrow = 6;
+
+    [Header("Anim Speed")]
+    [SerializeField, Range(0.01f, 0.3f)]
+    float valueToIncreaseAnim = 0.1f;
     [SerializeField] float minAnimSpeed = 1;
-    [SerializeField] float maxAnimSpeed = 1.2f;
+    [SerializeField] float maxAnimSpeed = 2f;
     [SerializeField] float maxAnimSpeedStatic = 4f;
+
+    [Header("Agent Speed")]
     [SerializeField] float agentSpeed = 20;
     [SerializeField] float agentAcceleration = 15;
 
@@ -203,8 +208,8 @@ public class GameManager : MonoBehaviour {
     private void IncreaseThrowValues() {
         if (_currentSteps >= stepToIncrease) {
             // Num Objects
-            minObjectsToThrow += valueToIncrease;
-            maxObjectsToThrow += valueToIncrease;
+            minObjectsToThrow += valueToIncreaseObjects;
+            maxObjectsToThrow += valueToIncreaseObjects;
 
             // Anim Speed
             if (minAnimSpeed < maxAnimSpeedStatic) minAnimSpeed += valueToIncreaseAnim;
@@ -213,8 +218,8 @@ public class GameManager : MonoBehaviour {
             if (minAnimSpeed > maxAnimSpeedStatic) minAnimSpeed = maxAnimSpeedStatic;
 
             // Agent config
-            agentSpeed += valueToIncrease;
-            agentAcceleration += valueToIncrease;
+            agentSpeed += valueToIncreaseObjects;
+            agentAcceleration += valueToIncreaseObjects;
 
             Debug.Log("Increase Throw & Agent Speed " + minObjectsToThrow + ", " + maxObjectsToThrow + ", "+ minAnimSpeed + ", " + maxAnimSpeed + ", " + agentSpeed + ", " + agentAcceleration);
 
