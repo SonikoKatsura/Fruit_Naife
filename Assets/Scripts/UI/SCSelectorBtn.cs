@@ -14,31 +14,39 @@ public class SCSelectorBtn : MonoBehaviour {
 
     public void MainMenu() {
         Debug.Log("Menu");
-        //SCManager.instance.LoadScene("MainMenu");
-        //AudioManager.instance.PlayMusic("MenuMusicLoop");
+        SCManager.instance.LoadScene("MainMenu");
+        AudioManager.instance.PlayMusic("MainTheme");
+        AudioManager.instance.PlaySFX("Button");
     }
 
     public void PlayGame() {
-        SCManager.instance.LoadScene("Game");
-        //AudioManager.instance.PlaySFX("start_level");
-        //AudioManager.instance.PlayMusic("MusicLoop");
+        SCManager.instance.LoadScene("map");
+        AudioManager.instance.PlayMusic("GameTheme");
+        AudioManager.instance.PlaySFX("Button");
     }
     public void LoadRanking() {
         SCManager.instance.LoadScene("Ranking");
+        AudioManager.instance.PlayMusic("MainTheme");
+        AudioManager.instance.PlaySFX("Button");
     }
     public void LoadConfig() {
         SCManager.instance.LoadScene("Settings");
+        AudioManager.instance.PlayMusic("MainTheme");
+        AudioManager.instance.PlaySFX("Button");
     }
     public void LoadCredits() {
         SCManager.instance.LoadScene("Credits");
+        AudioManager.instance.PlayMusic("MainTheme");
+        AudioManager.instance.PlaySFX("Button");
     }
 
     public void ResetGame() {
-        SCManager.instance.LoadScene("Level1");
-        //AudioManager.instance.PlaySFX("start_level");
-        //AudioManager.instance.PlayMusic("MusicLoop");
+        SCManager.instance.LoadScene("map");
+        AudioManager.instance.PlayMusic("GameTheme");
+        AudioManager.instance.PlaySFX("Button");
     }
     public void ExitGame() {
+        AudioManager.instance.PlaySFX("Button");
         SCManager.instance.ExitGame();
     }
 }

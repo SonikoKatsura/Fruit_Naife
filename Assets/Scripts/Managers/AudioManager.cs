@@ -59,6 +59,7 @@ public class AudioManager : MonoBehaviour {
         sfxClips["Throw3"] = Resources.Load<AudioClip>("SFX/throw3");
         sfxClips["Hit"] = Resources.Load<AudioClip>("SFX/hit");
         sfxClips["Fruit"] = Resources.Load<AudioClip>("SFX/fruit");
+        sfxClips["Button"] = Resources.Load<AudioClip>("SFX/button");
     }
 
     // Método privado para cargar la música de fondo directamente desde las carpetas
