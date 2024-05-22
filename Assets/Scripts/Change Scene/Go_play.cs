@@ -8,6 +8,6 @@ public class Go_play : MonoBehaviour
     // Start is called before the first frame update
     public void PlaygButton()
     {
-        SceneManager.LoadScene("Game"); // Call the LoadScene method of the SceneManager class to load a scene named "map"
+        SceneManager.LoadScene("map"); // Call the LoadScene method of the SceneManager class to load a scene named "map"
     }
 }
