@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour {
     private bool _hasMultiplier = false;
     private int _pointsMultiplier = 1;
 
+
     //SUSCRIPCIÓN al EVENTO
     void OnEnable() {
         Naife.OnHitBarrel += OnHitBarrel;
