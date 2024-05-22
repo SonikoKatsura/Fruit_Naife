@@ -1,4 +1,3 @@
-using Meta.WitAi.Lib;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,21 +51,17 @@ public class AudioManager : MonoBehaviour {
     // Método privado para cargar los efectos de sonido directamente desde las carpetas
     private void LoadSFXClips() {
         // Los recursos (ASSETS) que se cargan en TIEMPO DE EJECUCIÓN DEBEN ESTAR DENTRO de una carpeta denominada /Assets/Resources/SFX
-        sfxClips["Explosion"] = Resources.Load<AudioClip>("SFX/explosion");
-        sfxClips["Cut"] = Resources.Load<AudioClip>("SFX/fruit-slash");
-        sfxClips["Throw1"] = Resources.Load<AudioClip>("SFX/throw1");
-        sfxClips["Throw2"] = Resources.Load<AudioClip>("SFX/throw2");
-        sfxClips["Throw3"] = Resources.Load<AudioClip>("SFX/throw3");
-        sfxClips["Hit"] = Resources.Load<AudioClip>("SFX/hit");
-        sfxClips["Fruit"] = Resources.Load<AudioClip>("SFX/fruit");
-        sfxClips["Button"] = Resources.Load<AudioClip>("SFX/button");
+        sfxClips["Explosion"] = Resources.Load<AudioClip>("SFX/Explosion");
+        sfxClips["Cut"] = Resources.Load<AudioClip>("SFX/Cut");
+        sfxClips["Throw"] = Resources.Load<AudioClip>("SFX/Throw");
+        sfxClips["BtnSelect"] = Resources.Load<AudioClip>("SFX/BtnSelect");
     }
 
     // Método privado para cargar la música de fondo directamente desde las carpetas
     private void LoadMusicClips() {
         // Los recursos (ASSETS) que se cargan en TIEMPO DE EJECUCIÓN DEBEN ESTAR DENTRO de una carpeta denominada /Assets/Resources/Music
-        musicClips["MainTheme"] = Resources.Load<AudioClip>("Music/menu");
-        musicClips["GameTheme"] = Resources.Load<AudioClip>("Music/gameplay");
+        musicClips["MainTheme"] = Resources.Load<AudioClip>("Music/ForestMusic");
+        
     }
 
     // Método de la clase singleton para reproducir efectos de sonido
@@ -118,4 +113,5 @@ public class AudioManager : MonoBehaviour {
     public float GetSFXDuration(string clipName) {
         return sfxClips[clipName].length;
     }
+
 }
