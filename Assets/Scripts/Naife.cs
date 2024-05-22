@@ -32,7 +32,7 @@ public class Naife : MonoBehaviour {
                 Destroy(other.gameObject);
             }
 
-            if (other.gameObject.CompareTag("Fruit")) {
+            if (other.gameObject.CompareTag("Fruit") || other.gameObject.CompareTag("Cheese")) {
                 // Amount of current fruit points
                 Fruit currentFruit = other.gameObject.GetComponent<Fruit>();
                 int fruitPoints = currentFruit.GetAmountOfPoints();
@@ -57,7 +57,7 @@ public class Naife : MonoBehaviour {
         //AudioManager.instance.PlaySFX("Cut");
 
         Vector3 swordTipPosition = this.transform.position;                     // Position        
-        Quaternion rotationOffset = Quaternion.Euler(0f, -90f, 90f);             // Particle rotation offset
+        Quaternion rotationOffset = Quaternion.Euler(0f, -90f, 90f);            // Particle rotation offset
         Quaternion swordRotation = this.transform.rotation * rotationOffset;    // Fixed rotation
 
         // PLay Particle system Effect

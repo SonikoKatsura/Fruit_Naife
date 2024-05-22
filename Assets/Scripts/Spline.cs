@@ -4,6 +4,11 @@ using static UnityEngine.GraphicsBuffer;
 
 [ExecuteInEditMode]
 public class Spline : MonoBehaviour {
+    //EVENTO (DELEGADO)   --> Cheese Decrease Lives
+    public delegate void CheeseDecreaseLive();
+    public static event CheeseDecreaseLive OnCheeseDecreaseLive;    //(EVENTO)
+
+
     public Transform _start, _middle, _end;
 
     [SerializeField]
@@ -139,7 +144,16 @@ public class Spline : MonoBehaviour {
             yield return null;
         }
 
-        Destroy(objectToLaunch);
+        if (objectToLaunch != null) {
+            // Destruye el objeto al terminar el recorrido
+            if (objectToLaunch.CompareTag("Cheese")) {
+                Debug.Log("Cheese");
+                // Event Cheese Decrease Lives
+                if (OnCheeseDecreaseLive != null)
+                    OnCheeseDecreaseLive();
+            }
+            Destroy(objectToLaunch);
+        }
     }
 
     private void OnDrawGizmos() {

@@ -26,12 +26,12 @@ public class EnemyPatrol : MonoBehaviour {
 
     [Header("Throw")]
     [SerializeField] List<GameObject> objectList;
-    private float _minThrowAnimSpeed = 1;
-    private float _maxThrowAnimSpeed = 3;
+    private float _minThrowAnimSpeed;
+    private float _maxThrowAnimSpeed;
     //[SerializeField] float throwAnimDelay = 0.625f;
 
-    private int _minObjectsToThrow = 1;
-    private int _maxObjectsToThrow = 10;
+    private int _minObjectsToThrow;
+    private int _maxObjectsToThrow;
 
     //[SerializeField] float minTimeBetweenThrows = 1f;
     //[SerializeField] float maxTimeBetweenThrows = 2f;
@@ -139,15 +139,19 @@ public class EnemyPatrol : MonoBehaviour {
     }
 
     private IEnumerator ThrowFor() {
+        // + 1 porque es de tipo int y el máximo es exclusivo
         int randNumbObjects = Random.Range(_minObjectsToThrow, _maxObjectsToThrow + 1);
 
+        // Random Anim Speed
+        float randAnimSpeed = Random.Range(_minThrowAnimSpeed, _maxThrowAnimSpeed);
         Animator anim = GetComponent<Animator>();
+        anim.speed = randAnimSpeed;
+
+        //Debug.LogError("nº objects- " + randNumbObjects);
+        //Debug.Log("anim- " + randAnimSpeed);
 
         for (int i = 0; i < randNumbObjects; i++) {
             if (isThrowing) {
-                // Random Anim Speed
-                float randAnimSpeed = Random.Range(_minThrowAnimSpeed, _maxThrowAnimSpeed + 1);
-                anim.speed = randAnimSpeed;
 
                 // Iniciar la animación de lanzar
                 anim.SetTrigger("throwing");
@@ -156,11 +160,12 @@ public class EnemyPatrol : MonoBehaviour {
                 yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Throw"));
 
                 // Esperar a que la animación termine
-                yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length / randAnimSpeed);
+                yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
             }
         }
 
         isThrowing = false;
+        anim.speed = 1;
     }
 
     // Se llama desde la animacion
@@ -171,6 +176,9 @@ public class EnemyPatrol : MonoBehaviour {
             // Select Random Object 
             int randomIndex = Random.Range(0, objectList.Count);
             GameObject randomObject = objectList[randomIndex];
+
+            // Throw Sound
+            //AudioManager.instance.PlaySFX("Throw");
 
             // Event Throw Object
             if (OnThrownObject != null)
@@ -274,6 +282,12 @@ public class EnemyPatrol : MonoBehaviour {
     }
     public void SetMaxThrow(int maxThrow) {
         _maxObjectsToThrow = maxThrow;
+    }
+    public void SetMinAnimSpeed(float minAnimSpeed) {
+        _minThrowAnimSpeed = minAnimSpeed;
+    }
+    public void SetMaxAnimSpeed(float maxAnimSpeed) {
+        _maxThrowAnimSpeed = maxAnimSpeed;
     }
     #endregion
 }

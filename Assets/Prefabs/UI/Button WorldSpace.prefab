@@ -547,8 +547,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1139049047077699829}
-  - {fileID: 55288312034798620}
   - {fileID: 7700181231954830552}
+  - {fileID: 55288312034798620}
   - {fileID: 1035222341227551385}
   m_Father: {fileID: 4757087286588891272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df454a2c5bf9964186f5c38085f5e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 1
+  step: 0.1
   VRCamera: {fileID: 0}
 --- !u!114 &3147227935964057536
 MonoBehaviour:
