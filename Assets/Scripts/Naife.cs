@@ -24,6 +24,9 @@ public class Naife : MonoBehaviour {
                 // Vibration
                 HapticManager.instance.PlayHapticClip("explosion_2", rightHand);
 
+                // SFX
+                AudioManager.instance.PlaySFX("Cut");
+
                 // Event hit TNT Barrel
                 if (OnHitBarrel != null)
                     OnHitBarrel(transform.position);
@@ -42,6 +45,9 @@ public class Naife : MonoBehaviour {
 
                 // Vibration
                 HapticManager.instance.PlayHapticClip("sword", rightHand);
+
+                // SFX
+                AudioManager.instance.PlaySFX("Cut");
 
                 // Event hit Fruit
                 if (OnHitFruit != null)
