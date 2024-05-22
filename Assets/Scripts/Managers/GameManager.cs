@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] int maxObjectsToThrow = 6;
     [SerializeField] float minAnimSpeed = 1;
     [SerializeField] float maxAnimSpeed = 1.2f;
+    [SerializeField] float maxAnimSpeedStatic = 4f;
     [SerializeField] float agentSpeed = 20;
     [SerializeField] float agentAcceleration = 15;
 
@@ -206,10 +207,10 @@ public class GameManager : MonoBehaviour {
             maxObjectsToThrow += valueToIncrease;
 
             // Anim Speed
-            if (minAnimSpeed < 2) minAnimSpeed += valueToIncreaseAnim;
-            if (maxAnimSpeed < 2) maxAnimSpeed += valueToIncreaseAnim;
-            if (maxAnimSpeed > 2) maxAnimSpeed = 2;
-            if (minAnimSpeed > 2) minAnimSpeed = 2;
+            if (minAnimSpeed < maxAnimSpeedStatic) minAnimSpeed += valueToIncreaseAnim;
+            if (maxAnimSpeed < maxAnimSpeedStatic) maxAnimSpeed += valueToIncreaseAnim;
+            if (maxAnimSpeed > maxAnimSpeedStatic) maxAnimSpeed = maxAnimSpeedStatic;
+            if (minAnimSpeed > maxAnimSpeedStatic) minAnimSpeed = maxAnimSpeedStatic;
 
             // Agent config
             agentSpeed += valueToIncrease;
