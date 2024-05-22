@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SCSelectorBtn : MonoBehaviour {
+    //EVENTO (DELEGADO)   --> Hit Barrel
+    public delegate void RestartGame();
+    public static event RestartGame OnRestartGame;    //(EVENTO)
+
     // Método para cargar una nueva escena por nombre
     public void LoadScene(string sceneName) {
         SCManager.instance.LoadScene(sceneName);  // Carga la nueva escena y quita la anterior (lo mismo que LoadSceneMode.Single)
@@ -44,6 +48,10 @@ public class SCSelectorBtn : MonoBehaviour {
         SCManager.instance.LoadScene("map");
         AudioManager.instance.PlayMusic("GameTheme");
         AudioManager.instance.PlaySFX("Button");
+
+        // Event Restart Game
+        if (OnRestartGame != null)
+            OnRestartGame();
     }
     public void ExitGame() {
         AudioManager.instance.PlaySFX("Button");

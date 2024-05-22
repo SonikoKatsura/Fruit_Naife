@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField] Crono crono;
     private Coroutine _cronoCoroutine;
 
+    [Header("InGameUI Canvas")]
+    [SerializeField] Canvas InGameUICanvas;
+
     [Header("Game Over")]
     [SerializeField] bool isPlayground = false;
     [SerializeField] string nextScene = "RankingScene";
@@ -63,6 +66,7 @@ public class GameManager : MonoBehaviour {
         DoublePoints.OnDoublePoints += StartDoublePoints;
         EnemyPatrol.OnObjectsThrowed += IncreaseThrowValues;
         Spline.OnCheeseDecreaseLive += DecreaseLiveAndChecklose;
+        SCSelectorBtn.OnRestartGame += ResetAndPlayGame;
     }
     //DESUSCRIPCIÓN al EVENTO
     void OnDisable() {
@@ -71,13 +75,23 @@ public class GameManager : MonoBehaviour {
         DoublePoints.OnDoublePoints -= StartDoublePoints;
         EnemyPatrol.OnObjectsThrowed -= IncreaseThrowValues;
         Spline.OnCheeseDecreaseLive -= DecreaseLiveAndChecklose;
+        SCSelectorBtn.OnRestartGame -= ResetAndPlayGame;
     }
 
     void Start() {
+        ResetAndPlayGame();
+    }
+
+    private void ResetAndPlayGame() {
+        ResumeGame();
+
         ResetLives();
         ResetPoints();
+
+        // Activate InGameUI
+        if (InGameUICanvas) InGameUICanvas.gameObject.SetActive(true);
         // Deactivate GameOverCanvas
-        if(GameOverCanvas) GameOverCanvas.gameObject.SetActive(false);
+        if (GameOverCanvas) GameOverCanvas.gameObject.SetActive(false);
 
         if (timer == null) {
             timer = FindObjectOfType<Timer>();
@@ -164,6 +178,9 @@ public class GameManager : MonoBehaviour {
             // Event hit TNT Barrel
             if (OnLoseGame != null)
                 OnLoseGame();
+
+            // Hide InGameUI
+            if (InGameUICanvas) InGameUICanvas.gameObject.SetActive(false);
 
             // Show GameOverCanvas
             GameOverCanvas.gameObject.SetActive(true);

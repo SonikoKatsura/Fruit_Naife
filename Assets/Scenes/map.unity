@@ -15663,6 +15663,7 @@ MonoBehaviour:
   maxLives: 3
   timer: {fileID: 1355338783}
   crono: {fileID: 1355338782}
+  InGameUICanvas: {fileID: 1355338788}
   isPlayground: 0
   nextScene: RankingScene
   GameOverCanvas: {fileID: 3362114902249626795}
@@ -15671,9 +15672,9 @@ MonoBehaviour:
   enemyPatrol: {fileID: 184712465}
   stepToIncrease: 1
   valueToIncreaseObjects: 2
-  valueToIncreaseAnim: 0.2
   minObjectsToThrow: 3
   maxObjectsToThrow: 6
+  valueToIncreaseAnim: 0.2
   minAnimSpeed: 1
   maxAnimSpeed: 1.2
   maxAnimSpeedStatic: 4
@@ -16192,6 +16193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41b18d7a8500b4449d3959fcec4bbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &1355338788 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 4432971329659757290, guid: 3eaa73301d9f41d4b811f185741f459d, type: 3}
+  m_PrefabInstance: {fileID: 1355338780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1362643013
 GameObject:
   m_ObjectHideFlags: 0
