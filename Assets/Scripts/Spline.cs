@@ -60,7 +60,7 @@ public class Spline : MonoBehaviour {
     }
 
     #if UNITY_EDITOR
-    private void Update() {
+    /*private void Update() {
         #region Ver Parábola en update
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
@@ -71,7 +71,7 @@ public class Spline : MonoBehaviour {
         CalculateMidPoint(startPoint, targetPosition);
         
         #endregion
-    }
+    }*/
     #endif
 
     public void CalculateMidPoint(Vector3 startPoint, Vector3 targetPosition) {

@@ -16651,18 +16651,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spline Playground
       objectReference: {fileID: 0}
-    - target: {fileID: 3217233683246135302, guid: d54e970df0ba46a4185f1cb2d4eb0c3f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.24183951
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221985063590936367, guid: d54e970df0ba46a4185f1cb2d4eb0c3f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.12091976
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221985063590936367, guid: d54e970df0ba46a4185f1cb2d4eb0c3f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.207317
-      objectReference: {fileID: 0}
     - target: {fileID: 7585504723984453979, guid: d54e970df0ba46a4185f1cb2d4eb0c3f, type: 3}
       propertyPath: player
       value: 
