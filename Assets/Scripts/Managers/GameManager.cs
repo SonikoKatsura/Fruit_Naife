@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
         ResetLives();
         ResetPoints();
         // Deactivate GameOverCanvas
-        GameOverCanvas.gameObject.SetActive(false);
+        if(GameOverCanvas) GameOverCanvas.gameObject.SetActive(false);
 
         if (timer == null) {
             timer = FindObjectOfType<Timer>();
