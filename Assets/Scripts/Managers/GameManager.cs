@@ -95,14 +95,14 @@ public class GameManager : MonoBehaviour {
         DecreaseLiveAndChecklose();
 
         // TNT Explosion Sound
-        //AudioManager.instance.PlaySFX("Explosion");
+        AudioManager.instance.PlaySFX("Explosion");
     }
     private void OnHitFruit(int amountOfPoints) {
         // Increase points
         AddPoints(amountOfPoints);
 
         // Fruit Sound ??
-        //AudioManager.instance.PlaySFX("Fruit");
+        AudioManager.instance.PlaySFX("Fruit");
     }
 
     public void ResetLives() {
@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour {
         _currentPoints = 0;
     }
     private void DecreaseLiveAndChecklose() {
+        AudioManager.instance.PlaySFX("Hit");
         _currentLives--;
 
         // Check if Lose (wait some seconds and load Ranking Scene)
