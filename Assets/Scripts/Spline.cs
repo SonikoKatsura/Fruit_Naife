@@ -144,14 +144,16 @@ public class Spline : MonoBehaviour {
             yield return null;
         }
 
-        // Destruye el objeto al terminar el recorrido
-        if (objectToLaunch.CompareTag("Cheese")) {
-            Debug.Log("Cheese");
-            // Event Cheese Decrease Lives
-            if (OnCheeseDecreaseLive != null)
-                OnCheeseDecreaseLive();
+        if (objectToLaunch != null) {
+            // Destruye el objeto al terminar el recorrido
+            if (objectToLaunch.CompareTag("Cheese")) {
+                Debug.Log("Cheese");
+                // Event Cheese Decrease Lives
+                if (OnCheeseDecreaseLive != null)
+                    OnCheeseDecreaseLive();
+            }
+            Destroy(objectToLaunch);
         }
-        Destroy(objectToLaunch);
     }
 
     private void OnDrawGizmos() {
