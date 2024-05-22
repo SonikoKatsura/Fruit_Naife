@@ -33,8 +33,8 @@ public class EnemyPatrol : MonoBehaviour {
     private int _minObjectsToThrow;
     private int _maxObjectsToThrow;
 
-    //[SerializeField] float minTimeBetweenThrows = 1f;
-    //[SerializeField] float maxTimeBetweenThrows = 2f;
+    // Lista de nombres de efectos de sonido
+    [SerializeField] List<string> throwSoundNames = new List<string> { "Throw1", "Throw2", "Throw3" };
 
     // Banderas para controlar el estado del enemigo
     private bool isPicking = false;
@@ -177,8 +177,13 @@ public class EnemyPatrol : MonoBehaviour {
             int randomIndex = Random.Range(0, objectList.Count);
             GameObject randomObject = objectList[randomIndex];
 
+            // Select Random Sound
+            int soundIndex = Random.Range(0, throwSoundNames.Count);
+            string soundName = throwSoundNames[soundIndex];
+
             // Throw Sound
-            //AudioManager.instance.PlaySFX("Throw");
+            AudioManager.instance.PlaySFX(soundName);
+            
 
             // Event Throw Object
             if (OnThrownObject != null)
