@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour {
         Naife.OnHitFruit += OnHitFruit;
         DoublePoints.OnDoublePoints += StartDoublePoints;
         EnemyPatrol.OnObjectsThrowed += IncreaseThrowValues;
+        Spline.OnCheeseDecreaseLive += DecreaseLiveAndChecklose;
     }
     //DESUSCRIPCIÓN al EVENTO
     void OnDisable() {
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour {
         Naife.OnHitFruit -= OnHitFruit;
         DoublePoints.OnDoublePoints -= StartDoublePoints;
         EnemyPatrol.OnObjectsThrowed -= IncreaseThrowValues;
+        Spline.OnCheeseDecreaseLive -= DecreaseLiveAndChecklose;
     }
 
     void Start() {
@@ -84,19 +86,16 @@ public class GameManager : MonoBehaviour {
         }
 
         // Set initial enemy values
-        UpdateConfigValues(minObjectsToThrow, maxObjectsToThrow, minAnimSpeed, maxAnimSpeed, agentSpeed, agentAcceleration);
+        if (enemyPatrol != null)
+            UpdateConfigValues(minObjectsToThrow, maxObjectsToThrow, minAnimSpeed, maxAnimSpeed, agentSpeed, agentAcceleration);
     }
 
     private void OnHitBarrel(Vector3 position) {
         // Decrease live
-        DecreaseLive();
+        DecreaseLiveAndChecklose();
 
         // TNT Explosion Sound
         //AudioManager.instance.PlaySFX("Explosion");
-
-        // Check if Lose (wait some seconds and load Ranking Scene)
-        if (!isPlayground)
-            CheckIfLose();
     }
     private void OnHitFruit(int amountOfPoints) {
         // Increase points
@@ -112,8 +111,12 @@ public class GameManager : MonoBehaviour {
     private void ResetPoints() {
         _currentPoints = 0;
     }
-    private void DecreaseLive() {
+    private void DecreaseLiveAndChecklose() {
         _currentLives--;
+
+        // Check if Lose (wait some seconds and load Ranking Scene)
+        if (!isPlayground)
+            CheckIfLose();
     }
     private void AddPoints(int amountOfPoints) {
         if (_hasMultiplier) {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7774637252679218647}
   m_Layer: 0
   m_Name: Cheese
-  m_TagString: Fruit
+  m_TagString: Cheese
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
