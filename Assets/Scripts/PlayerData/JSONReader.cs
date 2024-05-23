@@ -38,9 +38,9 @@ public class JSONReader : MonoBehaviour {
     }
 
     public void SetData(PlayerDataList playerDataList) {
-        playerDataList.playerData.Sort((x, y) => x.score.CompareTo(y.score));
+        playerDataList.playerData.Sort((x, y) => y.score.CompareTo(x.score));
 
-        for(int i = 0; i < 3 && i < playerDataList.playerData.Count; i++) {
+        for (int i = 0; i < 5 && i < playerDataList.playerData.Count; i++) {
             playerNames[i].text = playerDataList.playerData[i].name;
             playerTimes[i].text = playerDataList.playerData[i].time;
             playerScores[i].text = playerDataList.playerData[i].score.ToString();

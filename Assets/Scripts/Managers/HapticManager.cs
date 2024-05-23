@@ -98,9 +98,9 @@ public class HapticManager : MonoBehaviour {
         player.Stop();
     }
 
-    private void OnDestroy() {
+    /*private void OnDestroy() {
         player.Dispose();
-    }
+    }*/
 
     private void OnApplicationQuit() {
         Haptics.Instance.Dispose();
