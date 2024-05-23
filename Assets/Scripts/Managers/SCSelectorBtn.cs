@@ -30,7 +30,7 @@ public class SCSelectorBtn : MonoBehaviour {
     }
 
     public void PlayGame() {
-        SCManager.instance.LoadScene("map");
+        SCManager.instance.LoadScene("Game");
         AudioManager.instance.PlayMusic("GameTheme");
         AudioManager.instance.PlaySFX("Button");
 
@@ -41,6 +41,13 @@ public class SCSelectorBtn : MonoBehaviour {
         AudioManager.instance.PlayMusic("GameTheme");
         AudioManager.instance.PlaySFX("Button");
         
+        PlayHapticBoth();   // Vibration
+    }
+    public void LoadIntro() {
+        SCManager.instance.LoadScene("Intro");
+        AudioManager.instance.PlayMusic("MainTheme");
+        AudioManager.instance.PlaySFX("Button");
+
         PlayHapticBoth();   // Vibration
     }
     public void LoadRanking() {

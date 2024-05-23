@@ -2446,7 +2446,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3269681061926493711}
         m_TargetAssemblyTypeName: SCSelectorBtn, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: LoadIntro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
