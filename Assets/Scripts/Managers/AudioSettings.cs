@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsController : MonoBehaviour
+public class AudioSettings : MonoBehaviour
 {
     [SerializeField] Slider music_slider;
     [SerializeField] Slider sfx_slider;
