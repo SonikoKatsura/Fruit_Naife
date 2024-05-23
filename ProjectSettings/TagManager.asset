@@ -10,6 +10,7 @@ TagManager:
   - Naife
   - Basket
   - Cheese
+  - InGameUI
   layers:
   - Default
   - TransparentFX

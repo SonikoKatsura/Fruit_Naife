@@ -255,9 +255,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240797870059062074}
-        m_TargetAssemblyTypeName: Main_Menu, Assembly-CSharp
-        m_MethodName: MenuButton
+      - m_Target: {fileID: 8039571052364302713}
+        m_TargetAssemblyTypeName: SCSelectorBtn, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -412,7 +412,6 @@ GameObject:
   - component: {fileID: 4296542054652529626}
   - component: {fileID: 8392495114740413424}
   - component: {fileID: 6144191817025144078}
-  - component: {fileID: 240797870059062074}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -505,18 +504,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &240797870059062074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057774791112241330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c383bcd38a528d141b6bf8577bdb4ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1158334842079908420
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,13 +798,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1370,13 +1357,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1787,6 +1774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5442082899897851379}
   - component: {fileID: 6655562178744911163}
+  - component: {fileID: 8039571052364302713}
   m_Layer: 0
   m_Name: Button WorldSpace
   m_TagString: Untagged
@@ -1824,6 +1812,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &8039571052364302713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8600102556790431889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb20d28ca29950a4aa13a9e08ac7d27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8849464427480525263
 GameObject:
   m_ObjectHideFlags: 0
