@@ -46,7 +46,7 @@ public class AudioSettings : MonoBehaviour
         if (selectedSFXVolume != sfx_slider.value)
         {
             selectedSFXVolume = sfx_slider.value;
-            AudioManager.instance.ChangeMusicVolume(sfx_slider.value);
+            AudioManager.instance.ChangeSFXVolume(sfx_slider.value);
             PlayerPrefs.SetFloat("SFXVolume", selectedSFXVolume);
         }
     }
