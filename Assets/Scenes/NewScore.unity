@@ -1327,6 +1327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRCameraRigInteraction Variant UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6038767893050129160, guid: b4829743f1e0c0d4b9372c196b18172e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8617118504934303655, guid: b4829743f1e0c0d4b9372c196b18172e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3972,7 +3976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.37222314, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.55900854, b: 0.2971698, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

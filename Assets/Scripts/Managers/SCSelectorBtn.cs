@@ -101,6 +101,6 @@ public class SCSelectorBtn : MonoBehaviour {
         // Vibration
         HapticManager.instance.PlayHapticClipBoth("click");
 
-        PlayHapticBoth();   // Vibration
+        //PlayHapticBoth();   // Vibration
     }
 }

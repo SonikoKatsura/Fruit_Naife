@@ -7160,6 +7160,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: 0.7071068
       objectReference: {fileID: 0}
+    - target: {fileID: 6038767893050129160, guid: b4829743f1e0c0d4b9372c196b18172e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6893672534555602136, guid: b4829743f1e0c0d4b9372c196b18172e, type: 3}
       propertyPath: m_Name
       value: OVRCameraRigInteraction Variant UI
