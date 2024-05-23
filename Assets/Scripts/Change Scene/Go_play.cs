@@ -10,4 +10,9 @@ public class Go_play : MonoBehaviour
     {
         SceneManager.LoadScene("map"); // Call the LoadScene method of the SceneManager class to load a scene named "map"
     }
+
+    public void CreditButton()
+    {
+        SceneManager.LoadScene("Credits"); // Call the LoadScene method of the SceneManager class to load a scene named "map"
+    }
 }
