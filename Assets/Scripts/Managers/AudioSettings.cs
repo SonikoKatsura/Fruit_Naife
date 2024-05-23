@@ -21,7 +21,7 @@ public class AudioSettings : MonoBehaviour
         selectedMusicVolume = savedMusicVolume;
         selectedSFXVolume = savedSFXVolume;
         LoadMusicVolume(savedMusicVolume);
-        LoadSFXVolume(savedMusicVolume);
+        LoadSFXVolume(savedSFXVolume);
     }
     void LoadMusicVolume(float volume)
     {
