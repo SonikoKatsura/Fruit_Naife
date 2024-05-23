@@ -52,13 +52,25 @@ public class HapticManager : MonoBehaviour {
         hapticsClips["explosion_16"] = Resources.Load<HapticClip>("Haptics/explosion_16");
         hapticsClips["explosion_2"] = Resources.Load<HapticClip>("Haptics/explosion_2");
 
+        hapticsClips["click"] = Resources.Load<HapticClip>("Haptics/click");
+
         hapticsClips["Rumble1"] = Resources.Load<HapticClip>("Haptics/RumbleClip1");
         hapticsClips["Rumble2"] = Resources.Load<HapticClip>("Haptics/RumbleClip2");
     }
 
     // Método de la clase singleton para reproducir vibraciones
-    public void PlayHapticClip() {
-        player.Play(Controller.Both);
+    public void PlayHapticClipBoth(string clipName) {
+        if (hapticsClips.ContainsKey(clipName)) {
+            // Obtiene el clip del diccionario
+            clip = hapticsClips[clipName];
+
+            // Asigna el clip al HapticClipPlayer
+            player = new HapticClipPlayer(clip);
+
+            // Play
+            player.Play(Controller.Both);
+        }
+        else Debug.LogWarning("El HapticClip " + clipName + " no se encontró en el diccionario de hapticsClips.");
     }
     public void PlayHapticClip(bool rightHand) {
         if (rightHand)
