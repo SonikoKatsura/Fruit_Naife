@@ -7,6 +7,8 @@ using UnityEngine;
 // ---------------------------------------------------------------------------------
 public class AudioManager : MonoBehaviour {
 
+    private float sfxvolume = 1;
+
     // Instancia ?nica del AudioManager (porque es una clase Singleton) STATIC
     public static AudioManager instance;
 
@@ -98,6 +100,8 @@ public class AudioManager : MonoBehaviour {
 
         // Asignar el clip al nuevo AudioSource
         newAudioSource.clip = dictionaryClips[clipName];
+        // Asignar volumen de settings
+        newAudioSource.volume = sfxvolume;
         // Reproducir el sonido
         newAudioSource.Play();
 
@@ -116,5 +120,14 @@ public class AudioManager : MonoBehaviour {
 
     public float GetSFXDuration(string clipName) {
         return sfxClips[clipName].length;
+    }
+    public void ChangeMusicVolume(float value)
+    {
+        musicSource.volume = value;
+    }
+
+    public void ChangeSFXVolume(float value)
+    {
+        sfxvolume = value;
     }
 }
