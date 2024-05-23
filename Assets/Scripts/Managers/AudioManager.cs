@@ -46,8 +46,13 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void Start() {
+        float savedVolume = PlayerPrefs.GetFloat("MusicVolume", 0.72f);
+        AudioManager.instance.ChangeMusicVolume(savedVolume);
+        float savedSFX = PlayerPrefs.GetFloat("SFXVolume", 0.72f);
+        AudioManager.instance.ChangeSFXVolume(savedSFX);
+
         /* Comentar si se a?aden m?s m?sicas - gestionarlo desde el GameManager */
-        //PlayMusic("Title");  // Reproduce la m?sica principal
+        PlayMusic("MainTheme");  // Reproduce la m?sica principal
     }
 
     // M?todo privado para cargar los efectos de sonido directamente desde las carpetas
