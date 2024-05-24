@@ -1,0 +1,1 @@
+This unity asset requires you to install Unity Oculus Integration package. Get it from Unity Asset Store then you can use this virtual keyboard system.
