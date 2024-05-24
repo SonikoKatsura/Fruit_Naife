@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28749263, g: 0.5809589, b: 0.80599236, a: 1}
+  m_IndirectSpecularColor: {r: 0.28740507, g: 0.58149207, b: 0.8081353, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8920,10 +8920,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1802659843}
     m_Modifications:
     - target: {fileID: 8191337359296515587, guid: 8a8ade231d4e4115a527f463ebb01a8b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 43.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 8191337359296515587, guid: 8a8ade231d4e4115a527f463ebb01a8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -253.2
       objectReference: {fileID: 0}
@@ -8967,17 +8963,9 @@ PrefabInstance:
       propertyPath: windZone
       value: 
       objectReference: {fileID: 743889843}
-    - target: {fileID: 8191337359296515598, guid: 8a8ade231d4e4115a527f463ebb01a8b, type: 3}
-      propertyPath: waterSyncWind
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8191337359296515599, guid: 8a8ade231d4e4115a527f463ebb01a8b, type: 3}
       propertyPath: m_Name
       value: Water Surface
-      objectReference: {fileID: 0}
-    - target: {fileID: 8191337359296515599, guid: 8a8ade231d4e4115a527f463ebb01a8b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9294,13 +9282,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743889842}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1802659843}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!82 &743889844
 AudioSource:
   m_ObjectHideFlags: 0
