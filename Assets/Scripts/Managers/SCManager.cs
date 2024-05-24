@@ -13,7 +13,7 @@ public class SCManager : MonoBehaviour {
     // Creamos una variable est�tica para almacenar la �nica instancia
     public static SCManager instance;
 
-    [SerializeField] float WaitNextScene = 1f; //Tiempo de espera antes de pasar a la siguiente escena
+    [SerializeField] float WaitNextScene = 5f; //Tiempo de espera antes de pasar a la siguiente escena
 
     // M�todo Awake que se llama al inicio antes de que se active el objeto. �til para inicializar
     // variables u objetos que ser�n llamados por otros scripts (game managers, clases singleton, etc).
@@ -63,7 +63,7 @@ public class SCManager : MonoBehaviour {
         
     }
     IEnumerator WaitToNextScene(string sceneName) {
-        yield return new WaitForSeconds(WaitNextScene);
+        yield return new WaitForSecondsRealtime(WaitNextScene);
         LoadScene(sceneName);
     }
 }

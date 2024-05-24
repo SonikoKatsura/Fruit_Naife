@@ -14,7 +14,7 @@ public class Crono : MonoBehaviour {
 
     void Update() {
         if (cronometroActivo && tiempoRestante > 0) {
-            text.gameObject.SetActive(true);   // Show Text
+            if (text) text.gameObject.SetActive(true);   // Show Text
             textCrono.gameObject.SetActive(true);   // Show Crono
 
             tiempoRestante -= Time.deltaTime;
@@ -23,7 +23,7 @@ public class Crono : MonoBehaviour {
                 cronometroActivo = false;
                 
                 Debug.Log("¡Tiempo agotado!");
-                text.gameObject.SetActive(false);   // Hide Text
+                if (text) text.gameObject.SetActive(false);   // Hide Text
                 textCrono.gameObject.SetActive(false);   // Hide Crono
             }
             UpdateTextCrono();

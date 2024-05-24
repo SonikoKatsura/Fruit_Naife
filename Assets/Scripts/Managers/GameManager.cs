@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("Game Over")]
     [SerializeField] bool isPlayground = false;
-    [SerializeField] string nextScene = "RankingScene";
+    [SerializeField] string nextScene = "NewScore";
     [SerializeField] Canvas GameOverCanvas;
     [SerializeField] TextMeshProUGUI pointsTxt;
     [SerializeField] TextMeshProUGUI timeTxt;
@@ -186,9 +186,16 @@ public class GameManager : MonoBehaviour {
             GameOverCanvas.gameObject.SetActive(true);
             if (pointsTxt) pointsTxt.text = _currentPoints.ToString();
             if (timeTxt) timeTxt.text = _timerTimeTxt;
+            // Start crono next scene
+            Crono crono = GameOverCanvas.GetComponentInParent<Crono>();
+            if (crono) {
+                Debug.Log("Corno");
+                crono.StartCrono(5);
+            }
+            else Debug.Log("error corno");
 
             // Pause
-            PauseGame();
+            //PauseGame();
 
             // Save Points and Time
             DataManager.instance.SetScore(_currentPoints);
@@ -196,7 +203,7 @@ public class GameManager : MonoBehaviour {
             DataManager.instance.SetTimeTxt(_timerTimeTxt);
 
             // Load next scene waiting some seconds
-            //SCManager.instance.LoadSceneWaiting(nextScene);
+            SCManager.instance.LoadSceneWaiting(nextScene);
         }
     }
 
