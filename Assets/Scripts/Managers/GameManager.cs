@@ -119,8 +119,10 @@ public class GameManager : MonoBehaviour {
         AudioManager.instance.PlaySFX("Explosion");
     }
     private void OnHitFruit(int amountOfPoints) {
-        // Increase points
-        AddPoints(amountOfPoints);
+        if (_currentLives > 0) {
+            // Increase points
+            AddPoints(amountOfPoints);
+        }
 
         // Fruit Sound ??
         AudioManager.instance.PlaySFX("Fruit");
