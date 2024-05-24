@@ -15,11 +15,11 @@ public class EnemyPatrol : MonoBehaviour {
     public delegate void ObjectsThrowed();
     public static event ObjectsThrowed OnObjectsThrowed;    //(EVENTO)
 
-    // Variables para destino, área de lanzamiento y jugador
+    // Variables para destino, ï¿½rea de lanzamiento y jugador
     [SerializeField] Transform destination, throwarea, player;
-    // Duración de las animaciones de lanzar y recoger
+    // Duraciï¿½n de las animaciones de lanzar y recoger
     [SerializeField] float pickduration;
-    // Agente de navegación
+    // Agente de navegaciï¿½n
     [SerializeField] private NavMeshAgent agent;
     // Array de cestas
     [SerializeField] private GameObject[] baskets;
@@ -40,11 +40,11 @@ public class EnemyPatrol : MonoBehaviour {
     private bool isPicking = false;
     private bool isThrowing = false;
 
-    //SUSCRIPCIÓN al EVENTO
+    //SUSCRIPCIï¿½N al EVENTO
     void OnEnable() {
         GameManager.OnLoseGame += GoIdle;
     }
-    //DESUSCRIPCIÓN al EVENTO
+    //DESUSCRIPCIï¿½N al EVENTO
     void OnDisable() {
         GameManager.OnLoseGame -= GoIdle;
     }
@@ -85,13 +85,13 @@ public class EnemyPatrol : MonoBehaviour {
         isPicking = true;
         // Mirar hacia la cesta
         FaceTarget(destination.position);
-        // Iniciar la animación de recoger
+        // Iniciar la animaciï¿½n de recoger
         GetComponent<Animator>().SetTrigger("pick");
         yield return new WaitForSeconds(pickduration);
 
         isPicking = false;
 
-        // Ir a la zona de lanzamiento si ha recogido más de 2 cestas
+        // Ir a la zona de lanzamiento si ha recogido mï¿½s de 2 cestas
         StartCoroutine(GoThrow());
     }
 
@@ -124,7 +124,7 @@ public class EnemyPatrol : MonoBehaviour {
         // Mirar hacia el jugador
         FaceTarget(player.position);
 
-        // Animación y nº de lanzamientos
+        // Animaciï¿½n y nï¿½ de lanzamientos
         yield return StartCoroutine(ThrowFor());
 
         // Evento que avisa al GameManager que ha terminado de lanzar (para la logica de aumentar la velocidad)
@@ -139,7 +139,7 @@ public class EnemyPatrol : MonoBehaviour {
     }
 
     private IEnumerator ThrowFor() {
-        // + 1 porque es de tipo int y el máximo es exclusivo
+        // + 1 porque es de tipo int y el mï¿½ximo es exclusivo
         int randNumbObjects = Random.Range(_minObjectsToThrow, _maxObjectsToThrow + 1);
 
         // Random Anim Speed
@@ -147,19 +147,19 @@ public class EnemyPatrol : MonoBehaviour {
         Animator anim = GetComponent<Animator>();
         anim.speed = randAnimSpeed;
 
-        //Debug.LogError("nº objects- " + randNumbObjects);
+        //Debug.LogError("nï¿½ objects- " + randNumbObjects);
         //Debug.Log("anim- " + randAnimSpeed);
 
         for (int i = 0; i < randNumbObjects; i++) {
             if (isThrowing) {
 
-                // Iniciar la animación de lanzar
+                // Iniciar la animaciï¿½n de lanzar
                 anim.SetTrigger("throwing");
 
-                // Esperar a que la animación de lanzamiento comience
+                // Esperar a que la animaciï¿½n de lanzamiento comience
                 yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Throw"));
 
-                // Esperar a que la animación termine
+                // Esperar a que la animaciï¿½n termine
                 yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
             }
         }
@@ -202,7 +202,7 @@ public class EnemyPatrol : MonoBehaviour {
 
             //Debug.Log(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
-            // Iniciar la animación de lanzar
+            // Iniciar la animaciï¿½n de lanzar
             //GetComponent<Animator>().SetTrigger("throwing");
 
             // Delay de la animacion antes de lanzar
@@ -250,17 +250,17 @@ public class EnemyPatrol : MonoBehaviour {
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
         */
-        // Obtener la dirección hacia el jugador
+        // Obtener la direcciï¿½n hacia el jugador
         Vector3 directionToPlayer = target - transform.position;
-        // Calcular la rotación para mirar hacia el jugador
+        // Calcular la rotaciï¿½n para mirar hacia el jugador
         Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-        // Aplicar la rotación al Canvas
+        // Aplicar la rotaciï¿½n al Canvas
         transform.rotation = lookRotation;
     }
 
     private Transform GetRandomBasketPosition()
     {
-        // Obtener una posición aleatoria de una cesta
+        // Obtener una posiciï¿½n aleatoria de una cesta
         int index = Random.Range(0, baskets.Length);
         destination = baskets[index].transform;
         return destination;
@@ -274,7 +274,7 @@ public class EnemyPatrol : MonoBehaviour {
     private IEnumerator Idle() {
         StopAllCoroutines();
 
-        // Iniciar la animación Idle
+        // Iniciar la animaciï¿½n Idle
         GetComponent<Animator>().SetTrigger("idle");
 
         yield return null;

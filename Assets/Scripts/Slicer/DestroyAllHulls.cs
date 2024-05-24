@@ -35,9 +35,11 @@ public class DestroyAllHulls : MonoBehaviour {
         // Buscar y destruir todos los objetos con el nombre especificado
         GameObject[] objects = FindObjectsOfType<GameObject>();
 
-        foreach (GameObject obj in objects) {
-            if (obj.name == objectName) {
-                FadeOutAndDestroy(obj);
+        if (objects != null && objects.Length > 0) {
+            foreach (GameObject obj in objects) {
+                if (obj.name == objectName) {
+                    FadeOutAndDestroy(obj);
+                }
             }
         }
         #endregion
@@ -81,5 +83,9 @@ public class DestroyAllHulls : MonoBehaviour {
     private void ResetLives() {
         GameManager gameManager = FindAnyObjectByType<GameManager>();
         gameManager.ResetLives();
+    }
+
+    private void OnDestroy() {
+        StopAllCoroutines();
     }
 }
