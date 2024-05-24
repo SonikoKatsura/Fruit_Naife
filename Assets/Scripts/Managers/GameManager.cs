@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour {
     private int _pointsMultiplier = 1;
 
 
-    //SUSCRIPCIÓN al EVENTO
+    //SUSCRIPCIï¿½N al EVENTO
     void OnEnable() {
         Naife.OnHitBarrel += OnHitBarrel;
         Naife.OnHitFruit += OnHitFruit;
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour {
         Spline.OnCheeseDecreaseLive += DecreaseLiveAndChecklose;
         SCSelectorBtn.OnRestartGame += ResetAndPlayGame;
     }
-    //DESUSCRIPCIÓN al EVENTO
+    //DESUSCRIPCIï¿½N al EVENTO
     void OnDisable() {
         Naife.OnHitBarrel -= OnHitBarrel;
         Naife.OnHitFruit -= OnHitFruit;

@@ -7,13 +7,13 @@ public class SCSelectorBtn : MonoBehaviour {
     public delegate void RestartGame();
     public static event RestartGame OnRestartGame;    //(EVENTO)
 
-    // Método para cargar una nueva escena por nombre
+    // Mï¿½todo para cargar una nueva escena por nombre
     public void LoadScene(string sceneName) {
         SCManager.instance.LoadScene(sceneName);  // Carga la nueva escena y quita la anterior (lo mismo que LoadSceneMode.Single)
 
         PlayHapticBoth();   // Vibration
     }
-    // Método para cargar una nueva escena por nombre Sin Quitar la actual
+    // Mï¿½todo para cargar una nueva escena por nombre Sin Quitar la actual
     public void LoadSceneAdditive(string sceneName) {
         SCManager.instance.LoadSceneAdditive(sceneName);    // Carga otra escena sin quitar la anterior
 
@@ -80,7 +80,7 @@ public class SCSelectorBtn : MonoBehaviour {
     }
 
     public void ResetGame() {
-        SCManager.instance.LoadScene("map");
+        SCManager.instance.LoadScene("Game");
         AudioManager.instance.PlayMusic("GameTheme");
         AudioManager.instance.PlaySFX("Button");
 
