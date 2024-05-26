@@ -33,19 +33,19 @@ public class Spline : MonoBehaviour {
     [SerializeField] bool xOffset = false;
     [SerializeField] bool zOffset = true;
     [SerializeField, Range(-0.5f, 0.5f)]
-    float xzOffset = -0.1f;
+    float xzOffset = -0.15f;
 
     [SerializeField]
     private float launchSpeed = 5f;
 
     [SerializeField] private float rotationSpeed = 45f; // Degrees per second
 
-    //SUSCRIPCIÓN al EVENTO
+    //SUSCRIPCIï¿½N al EVENTO
     void OnEnable() {
         RandomObjectSelector.OnThrownObject += LaunchObject;
         EnemyPatrol.OnThrownObject += LaunchObject;
     }
-    //DESUSCRIPCIÓN al EVENTO
+    //DESUSCRIPCIï¿½N al EVENTO
     void OnDisable() {
         RandomObjectSelector.OnThrownObject -= LaunchObject;
         EnemyPatrol.OnThrownObject -= LaunchObject;
@@ -61,12 +61,12 @@ public class Spline : MonoBehaviour {
 
     #if UNITY_EDITOR
     /*private void Update() {
-        #region Ver Parábola en update
+        #region Ver Parï¿½bola en update
         Vector3 startPoint = _start.position;
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
         // Static y, z position
         targetPosition.y = player.position.y;
-        if (xOffset) targetPosition.x = player.position.x + xzOffset;   // Variante para la escena de juego que está rotada
+        if (xOffset) targetPosition.x = player.position.x + xzOffset;   // Variante para la escena de juego que estï¿½ rotada
         if (zOffset) targetPosition.z = player.position.z + xzOffset;
         CalculateMidPoint(startPoint, targetPosition);
         
@@ -108,10 +108,10 @@ public class Spline : MonoBehaviour {
         Vector3 targetPosition = player.position + Random.insideUnitSphere * launchRadius;
         // Static y, z position
         targetPosition.y = player.position.y;
-        if (xOffset) targetPosition.x = player.position.x + xzOffset;   // Variante para la escena de juego que está rotada
+        if (xOffset) targetPosition.x = player.position.x + xzOffset;   // Variante para la escena de juego que estï¿½ rotada
         if (zOffset) targetPosition.z = player.position.z + xzOffset;
 
-        // Calcula el punto medio para este lanzamiento específico
+        // Calcula el punto medio para este lanzamiento especï¿½fico
         Vector3 midPointPosition = Vector3.Lerp(startPoint, targetPosition, _placementOffset);
         float randHeight = Random.Range(minHeightOffset, maxHeightOffset + 1);
         midPointPosition.y += randHeight;
