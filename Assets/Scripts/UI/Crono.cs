@@ -55,6 +55,7 @@ public class Crono : MonoBehaviour {
     }
 
     public void StartCrono(float duration) {
+        textCrono.color = Color.white;
         tiempoRestante = duration;
         cronometroActivo = true;
     }

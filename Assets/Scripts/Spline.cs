@@ -181,4 +181,8 @@ public class Spline : MonoBehaviour {
 
         }
     }
+
+    public void SetLaunchSpeed(float speed) {
+        launchSpeed = speed;
+    }
 }

@@ -46,9 +46,15 @@ public class GameManager : MonoBehaviour {
     [Header("Anim Speed")]
     [SerializeField, Range(0.01f, 0.3f)]
     float valueToIncreaseAnim = 0.1f;
-    [SerializeField] float minAnimSpeed = 1;
-    [SerializeField] float maxAnimSpeed = 2f;
-    [SerializeField] float maxAnimSpeedStatic = 4f;
+    [SerializeField] float minAnimSpeed = 1.2f;
+    [SerializeField] float maxAnimSpeed = 1.4f;
+    [SerializeField] float maxAnimSpeedStatic = 8f;
+
+    [Header("Spline Speed")]
+    [SerializeField] Spline spline;
+    [SerializeField] float splineSpeed = 6;
+    [SerializeField] float splineSpeedStepValue = 0.5f;
+    [SerializeField] float maxSplineSpeed = 15;
 
     [Header("Agent Speed")]
     [SerializeField] float agentSpeed = 20;
@@ -93,6 +99,7 @@ public class GameManager : MonoBehaviour {
         // Deactivate GameOverCanvas
         if (GameOverCanvas) GameOverCanvas.gameObject.SetActive(false);
 
+        // Timer
         if (timer == null) {
             timer = FindObjectOfType<Timer>();
             if (timer == null)
@@ -100,10 +107,18 @@ public class GameManager : MonoBehaviour {
         }
         StartTimer();
 
+        // Enemy patrol
         if (enemyPatrol == null) {
             enemyPatrol = GameObject.FindAnyObjectByType<EnemyPatrol>();
             if (enemyPatrol == null)
                 Debug.Log("No hay EnemyPatrol");
+        }
+
+        // Spline
+        if (spline == null) {
+            spline = GameObject.FindAnyObjectByType<Spline>();
+            if (spline == null)
+                Debug.Log("No hay Spline");
         }
 
         // Set initial enemy values
@@ -248,6 +263,10 @@ public class GameManager : MonoBehaviour {
             agentSpeed += valueToIncreaseObjects;
             agentAcceleration += valueToIncreaseObjects;
 
+            // Spline speed
+            splineSpeed += splineSpeedStepValue;
+            if (splineSpeed > maxSplineSpeed) splineSpeed = maxSplineSpeed;
+
             Debug.Log("Increase Throw & Agent Speed " + minObjectsToThrow + ", " + maxObjectsToThrow + ", "+ minAnimSpeed + ", " + maxAnimSpeed + ", " + agentSpeed + ", " + agentAcceleration);
 
             UpdateConfigValues(minObjectsToThrow, maxObjectsToThrow, minAnimSpeed, maxAnimSpeed, agentSpeed, agentAcceleration);
@@ -268,6 +287,9 @@ public class GameManager : MonoBehaviour {
         NavMeshAgent agent = enemyPatrol.GetComponent<NavMeshAgent>();
         agent.speed = speed;
         agent.acceleration = acceleration;
+
+        // Spline speed
+        spline.SetLaunchSpeed(splineSpeed);
     }
     #endregion
 

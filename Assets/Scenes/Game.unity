@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28737232, g: 0.58153695, b: 0.8079378, a: 1}
+  m_IndirectSpecularColor: {r: 0.28740507, g: 0.58149207, b: 0.8081353, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2177,6 +2177,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bdcce074dfca8940912b6a9691df87e, type: 3}
+--- !u!114 &208074085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8308605970081192748, guid: 3bdcce074dfca8940912b6a9691df87e, type: 3}
+  m_PrefabInstance: {fileID: 208074084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb72c964844fce04ea24178ca547002d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &217659250
 GameObject:
   m_ObjectHideFlags: 0
@@ -16237,9 +16248,13 @@ MonoBehaviour:
   minObjectsToThrow: 3
   maxObjectsToThrow: 6
   valueToIncreaseAnim: 0.2
-  minAnimSpeed: 1
-  maxAnimSpeed: 1.2
-  maxAnimSpeedStatic: 4
+  minAnimSpeed: 1.2
+  maxAnimSpeed: 1.4
+  maxAnimSpeedStatic: 8
+  spline: {fileID: 208074085}
+  splineSpeed: 6
+  splineSpeedStepValue: 0.5
+  maxSplineSpeed: 15
   agentSpeed: 20
   agentAcceleration: 15
 --- !u!1 &1345263901
